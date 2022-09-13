@@ -1,0 +1,87 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  .contenedor-carrito{
+    padding-top: 15.3%;
+    height:100%;
+    background-color:#e2e8f0;
+  }
+  .card-header{
+    color:white;
+    background-color:rgba(0, 0, 0, 0.845) !important;
+  }
+  .btn-outline-secondary{
+    margin-top:10px;
+    color:white !important;
+    background-color:rgba(0, 0, 0, 0.845) !important;
+  }
+  .my-3{
+    border:1px solid black !important;
+  }
+  .volver a {
+    text-decoration: none;
+    color: white;
+  }
+  #mostrarNotificacion  {
+    background-color: #729d38;
+      border-radius: 9px;
+      color: white;
+      display: inline-block;
+      line-height: 2;
+      font-size: 13px;
+      font-weight: bold;
+      margin-left: 8px;
+      min-width: 24px;
+      height:30px;
+      padding: 1px 4px;
+      text-align: center;
+      -webkit-transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+      transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+      vertical-align: middle;
+  }
+
+  
+ /* footer*/
+ footer{
+  width:100%;
+  padding: 30px;
+ }
+.contacto{
+padding: 10px;
+margin-right: 7%;
+  }
+  .lista{
+    margin-left: 25%;
+  }
+  .lista  li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color:var(--colorBlanco);
+    font-size: medium;
+  }
+  .lista2 li a{
+    text-decoration: none;
+    color:var(--colorBlanco);
+    font-size: medium;
+  }
+  ul li{
+    margin-left: 20px;
+  }
+  li a:hover{
+  font-weight: bold;
+  }
+  .contacto-suscripcion{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+    footer .divUno{
+display: flex;
+justify-content:center;
+align-items:center;
+    }

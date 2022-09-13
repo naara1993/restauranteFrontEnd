@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+    crossorigin="anonymous"
+  />
+</head>
+<body>
+<app-seccion-nav></app-seccion-nav>
+
+  <div class="text-center " *ngIf="isLogged; else loggedOut">
+    <h2>Ya has iniciado sesión</h2>
+</div>
+
+
+
+<ng-template #loggedOut >
+    <section class="section">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5 mt-4">
+              <img src="assets/login.jpg"
+                class="img-fluid pt-2" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+              <form   #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                <div class="divider d-flex align-items-center my-4">
+                  <p class="text-center fw-bold mx-3 mb-0">Login</p>
+                </div>
+      
+                <!-- user name -->
+                <div class="form-outline mb-4">
+                  <label for="nombreUsuario">Nombre de Usuario</label>
+                  <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
+                  [(ngModel)]="nombreUsuario" required> 
+                </div>
+      
+                <!-- Password  -->
+                <div class="form-outline mb-3">
+                  <label for="password">Contraseña</label>
+                  <input type="password" name="password" id="password" class="form-control"
+                  [(ngModel)]="password" required> 
+                </div>
+      
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                  <div class="form-check mb-0">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                    <label class="form-check-label" for="form2Example3">
+                      Remember me
+                    </label>
+                  </div>
+                  <a href="#!" class="text-body">olvidaste tu contraseña?</a>
+                </div>
+      
+
+
+                <div  class="text-center text-lg-start mt-4 pt-2">
+                  <button  type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                    [disabled]="!f.valid"
+                    >Ingresar</button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0">No tenes una cuenta?  <a href="../registro-login/registro-login.component.html"
+                      class="link-danger"
+                      routerLink="/registro"
+                      >Registrate</a></p>
+                </div>
+
+
+
+
+                <div class="text-center text-lg-start mt-4 pt-2">
+               <p class="small fw-bold mt-2 pt-1 mb-0"><a href="./index.html"
+                        class="link-danger">Pagina Principal</a></p>
+                  </div>
+
+                  <div  *ngIf="f.submitted && isLoginFail " class="alert alert-danger mt-3"> error en iniciar secion  :{{errMsj}}  </div>
+
+                          </form>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </ng-template>
+    
+
+
+
+    <!----------------- footer  --------------->
+
+    <footer class="bg-dark container-fluid">
+      <div class="row divUno">
+        <div class="col-md-4 col-lg-4 col-sm-4">
+          <ul class="list-unstyled lista text-white">
+            <li>
+              <a href="./index.html">home</a>
+            </li>
+            <li>
+              <a href="./menu.html">menu</a>
+            </li>
+            <li>
+              <a href="./contacto.html">contacto</a>
+            </li>
+            <li>
+              <a href="./locales.html">locales</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4">
+          <ul class="text-white list-unstyled p-3 lista2 contacto">
+            <li>
+              <a href="#!">
+                <i class="fa-solid fa-mobile-screen"></i>
+                4444-2222
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i class="fa-solid fa-envelope"></i>
+                rrrrr@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i class="fa-solid fa-map-location"></i>
+                local juan 3333
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-4">
+          <ul class="list-unstyled lista p-3 text-white">
+            <li>
+              <a href="./index.html">blog</a>
+            </li>
+            <li>
+              <a href="./menu.html">cupones</a>
+            </li>
+            <li>
+              <a href="./contacto.html">Reseña</a>
+            </li>
+            <li>
+              <a href="./locales.html">Opiniones</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row contacto-suscripcion mt-3">
+        <div class="col-md-4 col-lg-4 col-sm-4">
+          <div class="contenedor-redes-sociales d-flex mt-3">
+            <h5 class="text-uppercase text-white mb-3">
+              <i><b> Seguinos</b></i>
+            </h5>
+            <ul class="list-unstyled d-inline-flex ms-3">
+              <li class="pe-4">
+                <a href="#!" class="text-white">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+              </li>
+              <li class="pe-4">
+                <a href="#!" class="text-white">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </li>
+              <li class="pe-4">
+                <a href="#!" class="text-white">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-6 col-sm-8">
+          <form action="" id="suscripcion">
+            <label for="suscribete" class="text-white pe-1"
+              ><u>
+                <b><i>Suscribite y recibe nuevas novedades</i></b>
+              </u>
+            </label>
+            <input
+              type="email"
+              placeholder="email"
+              required
+              autocomplete="on"
+            />
+            <button id="sus" class="btn btn-dark">suscribirse</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+</body>
+</html>
