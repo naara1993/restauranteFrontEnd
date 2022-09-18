@@ -1,82 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-    crossorigin="anonymous"
-  />
-</head>
-<body>
-
-  <app-seccion-nav></app-seccion-nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <app-seccion-nav></app-seccion-nav>
     <section class="section">
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5 mt-4">
-              <img src="assets/registro.jpg"
-                class="img-fluid pt-2" alt="Sample image">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form>
-      
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0">Register</p>
-                </div>
-      
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5 mt-4">
+            <img
+              src="assets/registro.jpg"
+              class="img-fluid pt-2"
+              alt="Sample image"
+            />
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form>
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0">Register</p>
+              </div>
 
-                <!-- name input -->
-                <div class="form-outline mb-4">
-                    <input type="text" id="form3Example3" class="form-control form-control-lg"
-                      placeholder="  nombre completo" />
-                    <label class="form-label" for="form3Example3">Ingresa  nombre completo</label>
-                  </div>
+              <!-- name input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="form3Example3"
+                  class="form-control form-control-lg"
+                  placeholder="  nombre completo"
+                />
+                <label class="form-label" for="form3Example3"
+                  >Ingresa nombre completo</label
+                >
+              </div>
 
+              <!-- name user input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="form3Example3"
+                  class="form-control form-control-lg"
+                  placeholder="nombre de usuario"
+                />
+                <label class="form-label" for="form3Example3"
+                  >Ingresa nombre de usuario</label
+                >
+              </div>
 
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input
+                  type="email"
+                  id="form3Example3"
+                  class="form-control form-control-lg"
+                  placeholder="email"
+                />
+                <label class="form-label" for="form3Example3"
+                  >Ingresa tu email</label
+                >
+              </div>
 
+              <!-- Password input -->
+              <div class="form-outline mb-3">
+                <input
+                  type="password"
+                  id="form3Example4"
+                  class="form-control form-control-lg"
+                  placeholder="Ingresa tu contraseña"
+                />
+                <label class="form-label" for="form3Example4">Contraseña</label>
+              </div>
 
-                <!-- name user input -->
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="nombre de usuario" />
-                  <label class="form-label" for="form3Example3">Ingresa  nombre de usuario</label>
-                </div>
-      
-
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control form-control-lg"
-                      placeholder="email" />
-                    <label class="form-label" for="form3Example3">Ingresa tu email</label>
-                  </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-3">
-                  <input type="password" id="form3Example4" class="form-control form-control-lg"
-                    placeholder="Ingresa tu contraseña" />
-                  <label class="form-label" for="form3Example4">Contraseña</label>
-                </div>
-
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <button type="button" class="btn btn-primary btn-lg"
-                      style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrarse</button>
-                      <p class="small fw-bold mt-2 pt-1 mb-0"><a href="../login-registro/login-registro.component.html" 
-                        routerLink="/login"
-                      class="link-danger">volver login</a></p>
-                  </div>
-
-      
-              </form>
-            </div>
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem"
+                >
+                  Registrarse
+                </button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">
+                  <a
+                    href="../login-registro/login-registro.component.html"
+                    routerLink="/login"
+                    class="link-danger"
+                    >volver login</a
+                  >
+                </p>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      
     <!----------------- footer  --------------->
 
     <footer class="bg-dark container-fluid">
@@ -84,13 +109,19 @@
         <div class="col-md-4 col-lg-4 col-sm-4">
           <ul class="list-unstyled lista text-white">
             <li>
-              <a href="./index.html">home</a>
+              <a href="./index.html"
+              routerLink="/index"
+              >home</a>
             </li>
             <li>
-              <a href="./menu.html">menu</a>
+              <a href="./menu.html"
+              routerLink="/menu"
+              >menu</a>
             </li>
             <li>
-              <a href="./contacto.html">contacto</a>
+              <a href="./contacto.html"
+              routerLink="/contacto"
+              >contacto</a>
             </li>
             <li>
               <a href="./locales.html">locales</a>
@@ -180,6 +211,5 @@
         </div>
       </div>
     </footer>
-
-    </body>
+  </body>
 </html>

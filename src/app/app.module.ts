@@ -13,6 +13,7 @@ import { SeccionNavComponent } from './seccion-nav/seccion-nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CarritoComponent } from './carrito/carrito.component';
     SeccionNavComponent,
     MenuComponent,
     CarritoComponent,
+    ContactoComponent,
 
 
   ],

@@ -6,13 +6,15 @@ import { RegistroLoginComponent } from './registro-login/registro-login.componen
 import {IndexComponent} from './index/index.component';
 import{CarritoComponent } from './carrito/carrito.component';
 import { MenuComponent } from './menu/menu.component';
+import { ContactoComponent } from './contacto/contacto.component';
 const routes: Routes = [
 {path: '', component:IndexComponent },
 {path:'index',component : IndexComponent},
  {path: 'login', component:LoginRegistroComponent},
  {path: 'registro', component:RegistroLoginComponent},
  {path:'carrito',component:CarritoComponent},
- {path:'menu',component:MenuComponent,data: { expectedRol: ['admin', 'user'] } }
+ {path:'menu',component:MenuComponent,data: { expectedRol: ['admin', 'user'] } },
+ {path:'contacto',component:ContactoComponent}
 
 
 ];

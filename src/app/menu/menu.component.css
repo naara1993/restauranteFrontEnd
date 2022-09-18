@@ -20,9 +20,7 @@ main{
 main {
     display: flex;
     width: 100%;
-    height: 100vh;
-    padding:50px;
-    
+    padding:50px; 
 }
 
 main nav {
@@ -128,6 +126,7 @@ main section article img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-right: 45%;
 }
 
 /*modal*/
@@ -179,7 +178,9 @@ main section article img {
   background-color:rgba(255, 255, 255, 0.975);
  }
 
-
+.ocultar{
+  visibility:hidden;
+}
  .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
 
@@ -212,13 +213,12 @@ padding: 15px;
 position:fixed;
 top:65px;
 bottom:0px;
-left:190px;
+left:220px;
 right:0px;
 height:70%;
 width:70%;
 visibility:hidden;
 opacity: 0;
-
 }
 .es-visible{
   opacity: 1;
@@ -286,6 +286,62 @@ align-items:center;
         transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
         vertical-align: middle;
     }
+
+    input[type="text"],input[type="img"]{
+      width:100%;
+      border:0px;
+      border-bottom:2px solid black;
+
+    }
+    #suscripcion{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+#m{
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 50%;
+  position: fixed;
+  top: 230px;
+  right: 320px;
+  background-color: white;
+  padding: 20px;
+}
+#su{
+  background-color:rgba(255, 255, 255, 0.581);
+  width: 40%;
+}
+    .modalFormulario2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+      position: fixed;
+      top:120px;
+      left:600px;
+      right:0px;
+      bottom:0px;
+      height:100%;
+      visibility: hidden;
+      opacity: 1;
+      
+    }
+    .es-visibleF{
+      visibility: visible;
+      z-index:1000;
+      background-color: white;
+      height: 65%;
+      width: 30%;
+    }
+    #botonEliminar,#botonAgregar{
+      border:0px;
+      background-color:transparent;
+    }
+
 
     @media screen and (max-width: 800px){
       main{
@@ -470,3 +526,4 @@ align-items:center;
       font-size: small;
     }
     }  
+

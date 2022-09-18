@@ -5,39 +5,10 @@
     --colorBlanco:rgba(255, 255, 255);
     --colorNegro:rgba(0, 0, 0, 0.77);
   }
-
-  
-
-  
   body{
     font-family: 'Coure';
   }
-/*   
-.imagen{
-    height:40em; background-size:cover; width:auto;
-    background:url(../assets/fondo7.jpg);
-    background-position:50% 50%;
-  }  */
-  /*nav*/
-  .user i{
-    font-size:small;
-  }
-  .user i:hover{
-    cursor: pointer;
-  }
-  .nav1{
-  margin: 1%;
-  }
-  #icono{
-    color: white;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px;
-  }
-  #icono:hover{
-    cursor: pointer;
-  }
+
   /*main*/
   .titulo{
     color : white;
@@ -48,23 +19,19 @@
  
   }
   .jum{
-    padding-top: 15%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50%;
   }
-  .logo{
-    margin: 4%;
-    padding-right: 4%;
-  
-  }
-  .navbar-collapse{
-  padding-left: 20%;
-  }
-  
   .parrafo2{
     font-size: 20%;
   }
   .parrafo{
     font-weight: bold;
-    font-style: italic;
+    font-style:initial;
     font-size: 2rem;
   }
   
@@ -111,24 +78,6 @@
     font-size:small;
   }
   
-  @media screen and (max-width: 800px){
-    main{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top:30%;
-    }
-  }
-  
-  @media screen and (max-width: 425px){
-    main{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top:50%;
-    }
-    .user{
-      width: 40%;
-      padding-top: 5%;
-    }
+  main{
+    background-size: cover !important;
   }

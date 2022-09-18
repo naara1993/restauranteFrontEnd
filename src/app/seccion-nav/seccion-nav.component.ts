@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrdenDetalle } from '../menu/ordenDetalle/odenDetalle';
+import { Carritoservicios } from '../menu/serviceCarrito/carritoServicio';
 import { TokenService } from '../service/token.service';
 
 @Component({
@@ -9,12 +11,12 @@ import { TokenService } from '../service/token.service';
 })
 export class SeccionNavComponent implements OnInit {
 
-
+  show:boolean;
   isLogged = false;
- 
+ orden:OrdenDetalle[];
 
 
-  constructor(private tokenService: TokenService,private router: Router) { }
+  constructor(private tokenService: TokenService,private router: Router,private carritoService:Carritoservicios) { }
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -22,9 +24,31 @@ export class SeccionNavComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
+    this.carritoService.detalle().subscribe(
+      data => {
+        this.orden = data;
+        console.log(this.orden);
+        
+        this.ver(this.orden.length);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+
+
   }
 
 
+  
+
+ ver(cantidad:number){
+    let notificacion=document.getElementById('mostrarNotificacion');
+    notificacion!.append(
+      `${cantidad}`
+    )
+  }
   
   onLogOut(): void {
     this.tokenService.logOut();
@@ -34,3 +58,5 @@ export class SeccionNavComponent implements OnInit {
     
   }
 }
+
+

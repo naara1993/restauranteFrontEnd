@@ -5,7 +5,6 @@
     margin: 0;
 }
 
-/*body*/
 #icono{
     color: white;
     width: 20px;
@@ -20,7 +19,7 @@
     cursor: pointer;
   }
 #img{
-  margin-left:20px;
+  margin-left:35px;
 }
   #navbarSupportContent{
     padding-left:30%;
@@ -29,4 +28,44 @@
   }
   #user{
   align-items:center;
+  padding-left: 6%;
+  width: 25%;
+  }
+  #notificacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar-toggler-icon{
+    background-color: black;
+    margin-right: 5px;
+  }
+  #mostrarNotificacion{
+    border-radius: 2px;
+    background-color:rgb(255, 255, 255);
+    width:20px;
+    height:20px;
+    color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+  }
+
+
+  #div{
+    position:fixed;
+    top:90px;
+    display:block;
+    background-color:rgba(255, 255, 255, 0.936);
+    color:black;
+    z-index: 2;
+  }
+  #div .li{
+    text-decoration: none;
+    list-style:none; 
+    
+  }
+  .separador{
+    border:2px solid black;
   }

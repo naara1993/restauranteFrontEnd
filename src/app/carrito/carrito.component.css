@@ -43,8 +43,27 @@
       vertical-align: middle;
   }
 
-  
- /* footer*/
+
+
+    #eliminar{
+      display: flex;
+      justify-content:center;
+      align-items:center;
+      border:0px;
+      background-color:rgba(41, 41, 177, 0.92);
+      color:black;
+      width:24px;
+      height:25px;
+      font-weight: 800;
+      border-radius:10px;
+    }
+
+
+
+
+
+
+    /* footer*/
  footer{
   width:100%;
   padding: 30px;
@@ -85,3 +104,15 @@ display: flex;
 justify-content:center;
 align-items:center;
     }
+
+
+
+        #suscripcion{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+#su{
+  background-color:rgba(255, 255, 255, 0.581);
+  width: 40%;
+}

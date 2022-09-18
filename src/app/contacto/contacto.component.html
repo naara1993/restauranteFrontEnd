@@ -1,0 +1,250 @@
+<app-seccion-nav></app-seccion-nav>
+
+<div class="container.fluid">
+  <div class="row">
+    <div class="contenedor col-md-12">
+      <div class="">
+        <form   id="form" (ngSubmit)="onContacto()"   class="row"  target="_blank" 
+        method="POST"
+        novalidate
+        #f="ngForm"
+        >
+          <fieldset>
+            <legend class="text-center header">Contacto</legend>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"
+                ><i class="fa fa-user bigicon"></i
+              ></span>
+              <div class="col-md-8 mt-2">
+                <input
+                  type="text"
+                  name="nombre"
+                  id="txtNombre"
+                  placeholder="ingresa tu nombre"
+                  required
+                  [(ngModel)]="nombre"
+                  minlength="5"
+                  maxlength="50"
+                  autocomplete="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"
+                ><i class="fa-solid fa-envelope bigicon"></i
+              ></span>
+              <div class="col-md-8 mt-2">
+                <input
+                placeholder="email"
+                class="form-control"
+                name="correo"
+                placeholder="Correo"
+                required
+                #correo="ngModel"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [ngClass]="{
+                  'is-invalid animated shake': correo.invalid && correo.touched
+                }"
+                autocomplete="true"
+                type="email"
+                name="email"
+                id="txtEmail"
+                placeholder="ingresa tu email"
+                required
+                [(ngModel)]="email"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"
+                ><i class="fa-solid fa-pen bigicon"></i
+              ></span>
+              <div class="col-md-8 mt-2">
+                <textarea
+                rows="10"
+                cols="10"
+                name="message"
+                id="txtMensaje"
+                placeholder="ingresa tu mensaje"
+                required
+                [(ngModel)]="message"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 text-center mt-3">
+                <div class="div-button">
+                  <button  title="debe completar los campos para enviar el mensaje"
+                  type="button" class="" 
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    id="button" type="submit" 
+                     [disabled]="f.invalid"
+                     title="debes completar todos los campos para enviar"
+                     >
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!---modal ------------------------------------------------------------------>
+<section class="container-fluid">
+  <!-- Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          </div>
+        <div class="modal-body">
+          <p>
+            Muchas Gracias!  
+            Su mensaje fue recibido, obtendra una respuesta a la brevedad. 
+  
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+<!----------------- footer  --------------->
+
+<footer class="bg-dark container-fluid">
+  <div class="row divUno">
+    <div class="col-md-4 col-lg-4 col-sm-4">
+      <ul class="list-unstyled lista text-white">
+        <li>
+          <a href="./index.html" routerLink="">home</a>
+        </li>
+        <li>
+          <a href="./menu.html" routerLink="/menu">menu</a>
+        </li>
+        <li>
+          <a href="./contacto.html">contacto</a>
+        </li>
+        <li>
+          <a href="./locales.html">locales</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-4">
+      <ul class="text-white list-unstyled p-3 lista2 contacto">
+        <li>
+          <a href="#!">
+            <i class="fa-solid fa-mobile-screen"></i>
+            4444-2222
+          </a>
+        </li>
+        <li>
+          <a href="#!">
+            <i class="fa-solid fa-envelope"></i>
+            rrrrr@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="#!">
+            <i class="fa-solid fa-map-location"></i>
+            local juan 3333
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-4">
+      <ul class="list-unstyled lista p-3 text-white">
+        <li>
+          <a href="./index.html">blog</a>
+        </li>
+        <li>
+          <a href="./menu.html">cupones</a>
+        </li>
+        <li>
+          <a href="./contacto.html">Reseña</a>
+        </li>
+        <li>
+          <a href="./locales.html">Opiniones</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row contacto-suscripcion mt-3">
+    <div class="col-md-4 col-lg-4 col-sm-4">
+      <div class="contenedor-redes-sociales d-flex mt-3">
+        <h5 class="text-uppercase text-white mb-3">
+          <i><b> Seguinos</b></i>
+        </h5>
+        <ul class="list-unstyled d-inline-flex ms-3">
+          <li class="pe-4">
+            <a href="#!" class="text-white">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </li>
+          <li class="pe-4">
+            <a href="#!" class="text-white">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li class="pe-4">
+            <a href="#!" class="text-white">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-6 col-sm-8">
+      <form
+        (ngSubmit)="suscripcion()"
+        novalidate
+        #f="ngForm"
+        action=""
+        id="suscripcion"
+      >
+        <label for="suscribete" class="text-white pe-1"
+          ><u>
+            <b><i>Suscribite y recibe nuevas novedades</i></b>
+          </u>
+        </label>
+        <input
+          id="su"
+          placeholder="email"
+          autocomplete="on"
+          type="email"
+          class="form-control"
+          name="correo"
+          placeholder="Correo"
+          required
+          #correo="ngModel"
+          [ngModel]=""
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          [ngClass]="{
+            'is-invalid animated shake': correo.invalid && correo.touched
+          }"
+        />
+        <button
+          [disabled]="!f.valid"
+          id="sus"
+          title="ingresa tu email para suscribirte"
+          class="btn btn-dark"
+        >
+          suscribirse
+        </button>
+      </form>
+    </div>
+  </div>
+</footer>
