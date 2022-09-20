@@ -20,6 +20,7 @@ export class ContactoComponent implements OnInit {
 
   }
 
+  //enviar mensaje
 onContacto():void {
   let form =document.getElementById('form')
   const modal=document.getElementById("exampleModal");

@@ -33,5 +33,12 @@ export class Carritoservicios{
     public detalle(): Observable<OrdenDetalle[]> {
       return this.httpClient.get<OrdenDetalle[]>(this.carritoURL + '/lis');
     }
+
+
+    public deleteList(): Observable<OrdenDetalle> {
+      return this.httpClient.get<OrdenDetalle>(this.carritoURL + '/deleteList');
+    }
+
+
 }
   

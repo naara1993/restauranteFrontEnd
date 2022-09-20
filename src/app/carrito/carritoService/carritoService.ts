@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Orden } from '../carritoModels/orden';
 
 
 
@@ -20,6 +21,12 @@ export class carritoService{
       public eliminar(id: number): Observable<any> {
       return this.httpClient.get<any>(this.menuURL + `/delete/cart/${id}`);
       }
+
+
+      public saveOrder(id: number): Observable<Orden> {
+        return this.httpClient.get<Orden>(this.menuURL + `/save/${id}`);
+        }
+
 
 
     }

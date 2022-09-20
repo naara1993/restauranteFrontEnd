@@ -31,9 +31,9 @@
             <a class="nav-link" routerLink="/menu">Menu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./contacto.html"
-            routerLink="/contacto"
-            >Contacto</a>
+            <a class="nav-link" href="./contacto.html" routerLink="/contacto"
+              >Contacto</a
+            >
           </li>
           <li class="nav-item"><a class="nav-link" href="#">Locales</a></li>
         </div>
@@ -61,22 +61,22 @@
       </div>
 
       <div id="notificacion">
-        <span id="mostrarNotificacion"
-        (mouseover)="show = true"
-        (mouseout)="show = false"
+        <span
+          class="mostrarNotificacion"
+          id="mostrarNotificacion"
+          (mouseover)="show = true"
+          (mouseout)="show = false"
         >
-          <ul id="div"
-          *ngIf="show"
-          >
-            <li  class="li"  *ngFor="let detalle of orden">
+          <ul id="div" *ngIf="show">
+            <li class="li" *ngFor="let detalle of orden">
               <div class="d-flex p-1">
                 <div class="">
-                  {{detalle.nombre}}
+                  {{ detalle.nombre }}
                 </div>
                 <div class="ps-2">
-                  {{detalle.cantidad}}
+                  {{ detalle.cantidad }}
                 </div>
-                <br class="separador">
+                <br class="separador" />
               </div>
             </li>
           </ul>
@@ -85,8 +85,6 @@
           <i id="icono" class="fa-solid fa-cart-shopping"></i>
         </a>
       </div>
-
-
     </div>
   </nav>
 </header>

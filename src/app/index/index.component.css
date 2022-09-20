@@ -41,11 +41,8 @@
   .modal1{
     visibility: hidden;
     position: fixed;
-    top:120px;
-    bottom:0px;
-    left:580px;
-    right:0px;
-    max-height: 530px;
+    top:100px;
+    height: 530px;
     width:500px;
     z-index: 2500;
   }
@@ -53,6 +50,10 @@
     visibility: visible;
     opacity: 1;
     background-color:white;
+  }
+  .m{
+    display: flex;
+    justify-content: center;
   }
   .modal-cerrar{
     width: 100%;
@@ -80,4 +81,44 @@
   
   main{
     background-size: cover !important;
+  }
+
+  @media screen and (max-width:600px){
+    .jum{
+      height: 70%;
+    }
+    .modal1{
+      visibility: hidden;
+      position: fixed;
+      top:15px;
+      height: 530px;
+      width:280px;
+      z-index: 2500;
+    }
+    .es-visible{
+      visibility: visible;
+      opacity: 1;
+      background-color:white;
+    }
+    .quienes-somos{
+      font-size: 11px;
+  }
+  .modal-contenido img {
+    height: 150px;
+    width: 100%;
+}
+  }
+
+  @media screen and (max-width:1000px){
+    .modal1{
+      visibility: hidden;
+      position: fixed;
+      top:15px;
+      z-index: 2500;
+    }
+    .es-visible{
+      visibility: visible;
+      opacity: 1;
+      background-color:white;
+    }
   }

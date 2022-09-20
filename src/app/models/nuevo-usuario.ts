@@ -1,9 +1,9 @@
 export class NuevoUsuario {
+    id?:number;
     nombre: string;
     nombreUsuario: string;
     email: string;
     password: string;
-    
     authorities: string[];
 
     constructor(nombre: string, nombreUsuario: string, email: string, password: string) {

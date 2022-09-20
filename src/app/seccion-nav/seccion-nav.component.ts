@@ -13,7 +13,7 @@ export class SeccionNavComponent implements OnInit {
 
   show:boolean;
   isLogged = false;
- orden:OrdenDetalle[];
+  orden:OrdenDetalle[];
 
 
   constructor(private tokenService: TokenService,private router: Router,private carritoService:Carritoservicios) { }
@@ -42,20 +42,23 @@ export class SeccionNavComponent implements OnInit {
 
 
   
-
+//mostrar cantidad
  ver(cantidad:number){
     let notificacion=document.getElementById('mostrarNotificacion');
-    notificacion!.append(
-      `${cantidad}`
-    )
+    if(cantidad>0){
+      notificacion?.classList.add('es-visible');
+      notificacion!.append(
+        `${cantidad}`
+      )
+    }
   }
-  
+  //salir login
   onLogOut(): void {
-    this.tokenService.logOut();
-   
+this.carritoService.deleteList().subscribe(lista=>{
+ });
+    this.tokenService.logOut();  
     // window.location.reload();
     this.router.navigate(['/login']);
-    
   }
 }
 

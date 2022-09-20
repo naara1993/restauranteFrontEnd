@@ -15,6 +15,9 @@ import { MenuComponent } from './menu/menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ContactoComponent } from './contacto/contacto.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,7 @@ import { ContactoComponent } from './contacto/contacto.component';
     SeccionNavComponent,
     MenuComponent,
     CarritoComponent,
-    ContactoComponent,
+    ContactoComponent
 
 
   ],

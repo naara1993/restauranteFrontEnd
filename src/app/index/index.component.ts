@@ -30,7 +30,6 @@ export class IndexComponent implements OnInit {
    
     // window.location.reload();
     this.router.navigate(['/login']);
-    
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../service/auth-service';
 import { TokenService } from '../service/token.service';
 import { Menu } from './models/menu';
 import { OrdenDetalle } from './ordenDetalle/odenDetalle';
@@ -24,14 +25,23 @@ export class MenuComponent implements OnInit {
   roles: string[];
   isAdmin = false;
   correo:string;
+  orden:  OrdenDetalle;
+  can:number;
+
+
+
+  isLogged = false;
   constructor(private menuServicio:Menuservicios,
     private router: Router,
     private tokenService: TokenService,
     private toastr: ToastrService,
-    private elementRef:ElementRef, private renderer:Renderer2,
-    private carritoServicio:Carritoservicios
+    private elementRef:ElementRef,
+     private renderer:Renderer2,
+    private carritoServicio:Carritoservicios,
     ) {
      }
+
+
   ngOnInit(): void {
     this.cargarMenu();
     this.roles = this.tokenService.getAuthorities();
@@ -40,6 +50,17 @@ export class MenuComponent implements OnInit {
         this.isAdmin = true;
       }
     }); 
+
+          
+ 
+
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      alert("Para ver el menu y realizar la orden debe primero ingresar con su cuenta")
+      this.router.navigate(['/login']);
+    }
   }
 
   cargarMenu():void {
@@ -54,7 +75,7 @@ export class MenuComponent implements OnInit {
     );
   }
 
-
+//mostrar productos del nav
 mostrarProductos(menu:Menu[]) {
    this.m = this.menu.filter(item => item.company =='comidas');
 }
@@ -88,34 +109,45 @@ mostrarProductosB(menu:Menu[]) {
 // ngAfterViewInit() {
 //   this.renderer.listen(this.elementRef.nativeElement, 'click', (event) => { this.AgregarAlCarrito(this.id);});
 // }
-orden:  OrdenDetalle;
-can:number;
+
+
+ord:OrdenDetalle[];
  AgregarAlCarrito(id:number) {
-  let ingresado:boolean;
- let p=this.menu.find(x=>x.id==id);
-let menu:Menu;
-this.menuServicio.detail(id).subscribe(data => {
-  menu=data;
-})
+  this.carritoServicio.detalle().subscribe(
+    data => {
+      this.ord = data;
+      console.log(this.ord);
+    },
+    err => {
+      console.log(err);
+    }
+  );
+
+let ingresado:boolean=false;
+ //let p=this.menu.find(x=>x.id==id);
 this.carritoServicio.addCart(id,this.can).subscribe(
-  data => {
-    for(let i=0;i<data.length;i++){
-    ingresado=true;
-    if(data[i].menu.id==id){
-      ingresado=false;
+  data => {        
+    for(let i=0;i<this.ord.length;i++){
+      console.log(this.ord[i]);
+    if(this.ord[i].menu.id==id){
+     ingresado=true;
+     break;
+     
+    }else  {
+       
     }
    }
-
-   if(!ingresado){
+   if(!(ingresado)){
     this.orden=data;
-    alert("agregado al carrito")
-    window.location.reload()
+    alert("agregado al carrito");
+    
+     this.refresh();
+  
+  //  window.location.reload();
    }
    if(ingresado){
     alert("el producto ya esta en la lista");
-   }
-
-   
+   }   
   },
   error=>{
     if(this.can==null || this.can==undefined){
@@ -236,11 +268,11 @@ mostrarArticulo(id:number){
     data => {
       alert('producto agregado al menu OK',); 
       this.cerrarModal();
+      window.location.reload();
       this.router.navigate(['/menu']);
     },
     err => {
-      this.toastr.error(err.error.mensaje, 'Fail', {
-      });
+      alert("ocurrio un problema al crear el articulo para el menu")
     }
    );
   }
@@ -252,12 +284,12 @@ mostrarArticulo(id:number){
        alert("producto eliminado del menu")
         this.cargarMenu();
       },error => {
-      console.log("error"+error);
+      alert(error)
       }
       )
   }
 
-
+valor:boolean;
 //actualizar articulo
   actualizarMenu(id:number):number{
     this.menuServicio.detail(id).subscribe(
@@ -274,23 +306,28 @@ mostrarArticulo(id:number){
 
    return this.id=id;
   }
-
-
-
   onUpdate(){  
+    this.valor=true;
     this.menuServicio.update(this.id,this.men).subscribe(
       data => {
         alert("Menu  Actualizado");
+        this.valor=false;
+        this.refresh();
         this.router.navigate(['/menu']);
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-        });
+       alert(err)
       }
     ); 
   }
 
 
+  refresh(): void {
+    window.location.reload();
+}
+x(){
+  
+}
 //suscripcion 
 
 suscripcion(){
