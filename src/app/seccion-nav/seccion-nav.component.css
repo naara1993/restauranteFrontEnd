@@ -4,17 +4,18 @@
     padding: 0;
     margin: 0;
 }
-
+header nav{
+  padding: 10px;
+}
 #icono{
     color: white;
     width: 20px;
     height: 20px;
     text-align: center;
     padding: 10px;
+    font-size: 30px;
   }
-  header nav{
-    height:15%;
-  }
+
   #icono:hover{
     cursor: pointer;
   }
@@ -22,14 +23,16 @@
   margin-left:35px;
 }
   #navbarSupportContent{
-    padding-left:30%;
     margin:10px;
-    
+    font-size: large;
+    margin-left: 20%;;
   }
   #user{
   align-items:center;
-  padding-left: 6%;
   width: 25%;
+  margin-left: 10%;
+  width: 25%;
+
   }
   #notificacion{
     display: flex;
@@ -58,7 +61,7 @@
 
   #div{
     position:fixed;
-    top:90px;
+    top:100px;
     display:block;
     background-color:rgba(255, 255, 255, 0.936);
     color:black;
@@ -72,3 +75,5 @@
   .separador{
     border:2px solid black;
   }
+
+  

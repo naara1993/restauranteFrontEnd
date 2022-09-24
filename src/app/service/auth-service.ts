@@ -30,4 +30,13 @@ export class AuthService {
   public detailName(nombreUsuario: String): Observable<any> {
     return this.httpClient.get<any>(this.authURL + `detailName/${nombreUsuario}`);
   }
+  
+
+
+  public ListUser(): Observable<any> {
+    return this.httpClient.get<any>(this.authURL + `lista`);
+  }
+  
+
+
 }

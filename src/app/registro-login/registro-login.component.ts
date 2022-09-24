@@ -8,11 +8,10 @@ import { TokenService } from '../service/token.service';
 @Component({
   selector: 'app-registro-login',
   templateUrl: './registro-login.component.html',
-  styleUrls: ['./registro-login.component.css']
+  styleUrls: ['./registro-login.component.css'],
 })
 export class RegistroLoginComponent implements OnInit {
-
-  usuario:NuevoUsuario;
+  usuario: NuevoUsuario;
   nombre: string;
   nombreUsuario: string;
   email: string;
@@ -21,36 +20,58 @@ export class RegistroLoginComponent implements OnInit {
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
+  listUser: NuevoUsuario[] = [];
+  ListUser() {
+    this.authService.ListUser().subscribe((user) => {
+      this.listUser = user;
+    });
+  }
+  validar: boolean = false;
+  onRegister() {
+    this.usuario = new NuevoUsuario(
+      this.nombre,
+      this.nombreUsuario,
+      this.email,
+      this.password
+    );
+    for (let i = 0; i < this.listUser.length; i++) {
+      if (this.listUser[i].nombreUsuario == this.nombreUsuario) {
+        this.validar = true;
+      }
+      if (this.listUser[i].email == this.email) {
+        this.validar = true;
+      }
+    }
 
-  onRegister(){
-    console.log("sdsd");
-    
-    this.usuario = new NuevoUsuario(this.nombre, this.nombreUsuario, this.email, this.password);
     this.authService.nuevo(this.usuario).subscribe(
-      _data => {
-        alert('cuenta creada')
+      (_data) => {
+        alert('cuenta creada');
         this.router.navigate(['/login']);
       },
-      err => {
-        alert(err+"error");
+      (err) => {
+        if (this.validar) {
+          alert(
+            'error ingreso un nombre de usuario repetido o el email ya se encuentra registrado'
+          );
+        }
       }
     );
   }
-
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     }
+    this.ListUser();
   }
 
-//suscripcion 
-suscripcion(){
-  const sus=document.getElementById('su');
-   alert("gracias por tu suscripción");
-   sus!.innerHTML = "";
-}
+  //suscripcion
+  suscripcion() {
+    const sus = document.getElementById('su');
+    alert('gracias por tu suscripción');
+    sus!.innerHTML = '';
+  }
 }

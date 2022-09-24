@@ -21,7 +21,7 @@
 
 
 
-    <!--------------------hkjh-->
+    <!---------------------->
 
     <div class="container-fluid contenedor-carrito">
       <!-- Cart Table -->
@@ -31,7 +31,7 @@
             <div class="table-responsive mb-2">
               <table class="table">
                 <thead>
-                  <tr>
+                  <tr class="lista">
                     <th>Plato</th>
                     <th></th>
                     <th>precio</th>
@@ -71,10 +71,12 @@
             <input type="hidden" />
           </form>
           <hr class="my-3" />
+
+
           <div class="row">
             <div class="cart-discount text-center col-md-6 offset-md-3">
               <div class="card">
-                <div class="card-body">
+                <!-- <div class="card-body">
                   <h4>Si tenes un codigo de descuento, ingresalo</h4>
                   <form>
                     <div class="form-group">
@@ -90,13 +92,16 @@
                       value="Aplicar"
                       class="btn btn-outline-secondary btn-block"
                     />
-                    <!--fin tabla -->
+                 
                     <input type="hidden" />
                   </form>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
+
+
+          
         </div>
 
         <!-- Cart Options -->
@@ -193,11 +198,11 @@
                 <button
                   (click)="mostrarModal()"
                   type="button"
-                  class="btn btn-dark"
+                  class="btn btn-dark bt ms-5"
                 >
                   terminar compra
                 </button>
-                <button type="button" class="btn btn-dark ms-5 volver">
+                <button type="button" class="btn btn-dark bt ms-5 volver">
                   <a href="./menu.html" routerLink="/menu">volver a al menu</a>
                 </button>
               </div>
@@ -211,7 +216,7 @@
 
     <div id="modal" class="modal">
       <div id="">
-        <div class="cont d-flex justify-content-end">
+        <div class="cont d-flex justify-content-end bg-dark">
           <button (click)="cerrarModal()" class="btn btn-primary">X</button>
         </div>
         <div id="container">
@@ -222,26 +227,22 @@
               <h4 id="total-price"><span>$</span>{{ totalF }}</h4>
               <div class="mt-2 d-flex">
                 <p class="pago">Pago con efectivo </p>
-                <input (click)="verificar()" class="" type="checkbox" name="efectivo" id="efectivo"
+                <input (click)="verificar()" class="" type="checkbox" value="efectivo" name="efectivo" id="efectivo"
                 >
               </div>
               <button  (click)="pagar()"  class="mt-3 btn btn-primary">Pagar con Efectivo en la entrega</button>
             </div>
           </div>
           <div id="right-col">
-            <h2>Payment</h2>
-            <div id="logotype">
-              <img
-                id="mastercard"
-                src="http://emilcarlsson.se/assets/MasterCard_Logo.png"
-                alt=""
-              />
-            </div>
-
-            <form action="">
-              <label for="">Cardnumber</label>
-              <div id="cardnumber">
-                <input
+            <h2>Pago con Tarjeta</h2>
+            <form novalidate (ngSubmit)="buy()" [formGroup]="stripeForm" #f="ngForm">
+              <label for="">Numero de tarjeta </label>
+              <div id="card" class="mb-3" >
+                  <div id="card-element" class="field"></div>
+                    <div *ngIf="error" class="alert alert-danger">
+                      {{error}}
+                  </div>
+                <!-- <input
                 id="numeroTarjeta1"
                   type="number"
                   max="4"
@@ -275,50 +276,17 @@
                   max-length="4"
                   min="4"
                   placeholder="2345"
-                />
+                /> -->
               </div>
 
-              <label for="">Cardholder</label>
-              <input id="cardholder" type="text" placeholder="John Doe" />
-              <div class="left">
-                <label for="">Expiration Date</label>
-                <select  name="month" id="month" onchange="" size="1">
-                  <option value="00">Month</option>
-                  <option value="01">January</option>
-                  <option value="02">February</option>
-                  <option value="03">March</option>
-                  <option value="04">April</option>
-                  <option value="05">May</option>
-                  <option value="06">June</option>
-                  <option value="07">July</option>
-                  <option value="08">August</option>
-                  <option value="09">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-                <select name="year" id="year" onchange="" size="1">
-                  <option value="00">Year</option>
-                  <option value="01">2016</option>
-                  <option value="02">2017</option>
-                  <option value="03">2018</option>
-                  <option value="04">2019</option>
-                  <option value="05">2020</option>
-                  <option value="06">2021</option>
-                  <option value="07">2022</option>
-                  <option value="08">2023</option>
-                  <option value="09">2024</option>
-                  <option value="10">2025</option>
-                </select>
-              </div>
-
-              <div class="right">
-                <label id="cvc-label" for=""
-                  >CVC <i class="fa fa-question-circle-o" aria-hidden="true"></i
-                ></label>
-                <input id="cvc" type="text" placeholder="123" maxlength="3" />
-              </div>
-              <button id="purchase">Pagar</button>
+              <label for="">Nombre completo</label>
+              <input class="form-control" class="w-100" type="text" formControlName="name" placeholder="tu nombre">
+              <button id="botonComprar" type="submit" class="btn btn-outline-success">
+                Pagar
+              </button>
+              <!-- <button id="purchase"
+              [disabled]="!f.valid"
+              >Pagar</button> -->
               <p id="support">
                 Having problem with checkout?
                 <a href="#">Contact our support</a>.
@@ -476,6 +444,23 @@
 </div>
 
 </footer>
+
+
+
+
+
+
+<!--asdasdasd-->
+<!-- <form novalidate (ngSubmit)="buy()" [formGroup]="stripeForm" #f="ngForm">
+  <input class="form-control" type="text" formControlName="name" placeholder="tu nombre">
+  <div id="card-element" class="field"></div>
+  <div *ngIf="error" class="alert alert-danger">
+      {{error}}
+  </div>
+  <button type="submit" class="btn btn-outline-success"   [disabled]="!f.valid" >
+    Comprar
+  </button>
+</form> -->
 
 
     <script src="./js/JQuery/jquery-3.6.0.min.js"></script>

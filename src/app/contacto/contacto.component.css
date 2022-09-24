@@ -23,7 +23,7 @@ legend {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .contenedor {
-  padding-top: 13%;
+  padding-top: 10%;
   padding-bottom: 5%;
   background-color: #e2e8f0;
 }
@@ -109,12 +109,13 @@ footer .divUno {
   background-color: rgba(255, 255, 255, 0.581);
   width: 40%;
 }
-
-
 @media screen and (max-width:600px){
+  html{
+    width:110vw !important;
+  }
 /*formulario*/
 .contenedor {
-  padding-top: 25%;
+  padding-top: 31% !important;
   padding-bottom: 5%;
   background-color: #e2e8f0;
 }
@@ -164,7 +165,7 @@ svg{
 
 @media screen and (max-width:900px){
   .contenedor {
-    padding-top:25%;
+    padding-top:15%;
     padding-bottom: 5%;
     background-color: #e2e8f0;
   }

@@ -14,9 +14,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 
 
+
+import {  ReactiveFormsModule } from '@angular/forms';
+import { EstadoOrdenComponent } from './estado-orden/estado-orden.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { ContactoComponent } from './contacto/contacto.component';
     SeccionNavComponent,
     MenuComponent,
     CarritoComponent,
-    ContactoComponent
+    ContactoComponent,
+    EstadoOrdenComponent,
 
 
   ],
@@ -39,7 +44,10 @@ import { ContactoComponent } from './contacto/contacto.component';
     HttpClientModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    NgxStripeModule.forRoot('pk_test_TYooMQauvdEDq54NiTphI7jx'),
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

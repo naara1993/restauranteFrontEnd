@@ -325,16 +325,46 @@ valor:boolean;
   refresh(): void {
     window.location.reload();
 }
+
 x(){
   
 }
 //suscripcion 
-
 suscripcion(){
   const sus=document.getElementById('su');
    alert("gracias por tu suscripción");
    sus!.innerHTML = "";
 }
+mostrarTotal():void{
+let c=0;
+let total=0;
+let agregar =<HTMLInputElement> document.getElementById('agregar');
+agregar.innerHTML = "";
+let cantidad = <HTMLInputElement> document.getElementById('cantidad');
+c=parseInt(cantidad.value);
+total=this.producto.price*c;
+if(isNaN(total)){
 
+}else{
+  agregar.append(`$  ${(this.producto.price*c)}
+  `)
+}
+}
+
+mostrarTotalClick(){
+let c=0;
+let total=0;
+let agregar =<HTMLInputElement> document.getElementById('agregar');
+agregar.innerHTML = "";
+let cantidad = <HTMLInputElement> document.getElementById('cantidad');
+c=parseInt(cantidad.value);
+total=this.producto.price*c;
+if(isNaN(total)){
+
+}else{
+  agregar.append(`$  ${(this.producto.price*c)}
+  `)
+}
+}
 }
 

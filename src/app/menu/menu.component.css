@@ -245,6 +245,16 @@ main section article img {
   height: 65%;
   width: 30%;
 }
+#form{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:4%;
+}
+.i{
+  display: flex;
+}
 .mo{
   display: flex;
   justify-content: flex-end;
@@ -333,8 +343,87 @@ label {
 #sus {
   background-color: black;
 }
-
 @media screen and (max-width: 800px) {
+main nav{
+ margin-top:5%;
+  width:100%;
+}
+html{
+  width:122vw !important;
+}
+
+main{
+display: block;
+padding: 0px !important;
+}
+
+main section {
+width: 100% !important;
+display: block !important;
+}
+
+#misCategorias{
+margin: 15px;
+border: 0px;
+display: flex;
+justify-content: center;
+margin-right: 0%;
+}
+main nav input{
+text-align: center;
+width: 95%;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+main section article img{
+width: 100% !important;
+height: auto;
+}
+
+
+main nav h2{
+text-align: center;
+margin-left: 10px;
+}
+main section  article {
+height: auto;
+width: auto !important;
+text-align: center;
+margin-top: 20%;
+margin-right: 2%;
+}
+/* footer*/
+#suscripcion {
+  display: block;
+  text-align: center;
+  padding: 10px;
+}
+#su {
+  margin-top: 5px;
+  width: 100%;
+}
+footer .divUno {
+  padding: 20px !important;
+}
+.divUno {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.br {
+  padding: 5px;
+}
+svg {
+  font-size: small;
+}
+.a {
+  font-size: 12px !important;
+}
+.contacto {
+  padding-left: 2px;
+}
+
+}
+@media screen and (max-width: 600px) {
   html{
     width:122vw !important;
   }
@@ -349,7 +438,7 @@ main section {
   display: block !important;
 }
 main nav{
- padding-top: 15% !important;
+ padding-top: 30% !important;
   width:100%;
 }
 #misCategorias{
@@ -412,6 +501,47 @@ main section  article {
   .contacto {
     padding-left: 2px;
   }
+
+  /*modal agregar producto*/
+  .modal-p {
+    display: block;
+    padding: 15px;
+    position: fixed;
+    top: 160px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-left: 10%;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .es-visible {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+  #form{
+    display: block !important;
+  }
+  .body-modal{
+    display: block !important;
+  }
+  .m {
+    background-color: rgba(255, 255, 255, 0.975);
+    height:auto;
+        width: auto;
+}
+.i{
+  display: block;
+  text-align: center;
+}
+.body-modal img {
+  height: 20vh;
+  width:auto;
+}
+#navUl{
+  display: none!important;
+}
 }
 
 @media screen and (max-width: 1251px) {
@@ -438,3 +568,12 @@ main section  article {
   }
 }
 
+@media screen and (max-width: 400px) {
+  main nav{
+    padding-top:40% !important;
+  }
+  main{
+    padding-top: 5%;
+  }
+
+}

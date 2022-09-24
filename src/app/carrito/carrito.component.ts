@@ -7,6 +7,10 @@ import{Menu} from '../menu/models/menu'
 import { AuthService } from '../service/auth-service';
 import { NuevoUsuario } from '../models/nuevo-usuario';
 import { Router } from '@angular/router';
+import { PaymentService } from '../service/payment.service';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { StripeService, Elements, Element as StripeElement, ElementsOptions } from 'ngx-stripe';
+
 
 
 @Component({
@@ -19,13 +23,47 @@ orden:OrdenDetalle[]=[];
 totalF=0;
 menu:Menu[]=[];
 usuario:NuevoUsuario;
+ 
+
+error: any;
+elements: Elements;
+card: StripeElement;
+elementsOptions: ElementsOptions = {
+  locale: 'es'
+};
+stripeForm:FormGroup;
+
+// public stripeForm = new FormGroup({
+//   name: new FormControl('', Validators.required)
+// });
+
+
+createForm(){
+  this.stripeForm=this.fb.group({
+name:['',[Validators.required]],
+amount:['',[Validators.required]]
+
+  });
+}
+
+
+
+
+
   constructor(
+  
     private ordenServicio:Carritoservicios,
     private menuServicios:Menuservicios,
     private carritoServicio:carritoService,
     private usuarioServicio:AuthService,
     private router: Router,
+    private stripeService: StripeService,
+    private paymentService: PaymentService,
+    private fb: FormBuilder
     ) { }
+
+ 
+
 
   ngOnInit(): void {
 this.listaDetalle();
@@ -34,45 +72,46 @@ this.usuarioServicio.detailName(String(User)).subscribe(data => {
   this.usuario=data;
 })
 // console.log(User);
-
+this.loading=true;
+this.createForm();
+this.stripeService.elements(this.elementsOptions)
+.subscribe((elements: any) => {
+  this.elements = elements;
+  // Only mount the element the first time
+  if (!this.card) {
+    this.card = this.elements.create('card', {
+      style: {
+        base: {
+          iconColor: '#666EE8',
+          color: '#31325F',
+          lineHeight: '40px',
+          fontWeight: 300,
+          fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+          fontSize: '18px',
+          '::placeholder': {
+            color: '#CFD7E0'
+          }
+        }
+      }
+    });
+    this.card.mount('#card-element');
+  }
+});
   }
 verificar():void{
-  let numeroTarjeta1=<HTMLInputElement>document.getElementById('numeroTarjeta1');
-  let numeroTarjeta2=<HTMLInputElement>document.getElementById('numeroTarjeta2');
-  let numeroTarjeta3=<HTMLInputElement>document.getElementById('numeroTarjeta3');
-  let numeroTarjeta4=<HTMLInputElement>document.getElementById('numeroTarjeta4');
-  let purchase=<HTMLInputElement>document.getElementById('purchase');
-  let month=<HTMLInputElement>document.getElementById('month');
-  let cardholder=<HTMLInputElement>document.getElementById('cardholder');
-  let year=<HTMLInputElement>document.getElementById('year');
-  const efectivo=<HTMLInputElement>document.getElementById('efectivo');
-  let cvc=<HTMLInputElement>document.getElementById('cvc');
-  if(efectivo.checked){
-    numeroTarjeta1.disabled=true;
-    numeroTarjeta2.disabled=true;
-    numeroTarjeta3.disabled=true;
-    numeroTarjeta4.disabled=true;
-    cardholder.disabled=true;
-    month.disabled=true;
-    year.disabled=true;
-    cvc.disabled=true;
-    purchase.disabled=true;
-  }else{
-    numeroTarjeta1.disabled=false;
-    numeroTarjeta2.disabled=false;
-    numeroTarjeta3.disabled=false;
-    numeroTarjeta4.disabled=false;
-    cardholder.disabled=false;
-    month.disabled=false;
-    year.disabled=false;
-    cvc.disabled=false;
-    purchase.disabled=false;
-  }
+ const efectivo=<HTMLInputElement>document.getElementById('efectivo');
+ let botonComprar=<HTMLInputElement>document.getElementById('botonComprar');
+
+ if(efectivo.checked){
+  botonComprar.disabled=true;
+ }else{
+  botonComprar.disabled=false;
+ }
 }
 
 listaDetalle(){
   let n=0;
-  this.menuServicios.lista().subscribe(lista => {
+   this.menuServicios.lista().subscribe(lista => {
     this.menu=lista;
   })
   this.ordenServicio.detalle().subscribe(detalle => {
@@ -131,12 +170,55 @@ cerrarModal(){
     alert("por el momento esta funcionalidad no esta disponible, estamos trabajando para ponerla en marcha")
   }
   pagar(){
-    this.carritoServicio.saveOrder(this.usuario.id!).subscribe(lista=>{
-    })
-    alert("orden creada,muchas gracias");
-    this.cerrarModal(); 
+    if(this.orden.length<=0){
+      console.log(this.orden.length);    
+      alert("la lista esta vacia, para terminar la compra debe seleccionar un producto")
+    }else{
+      console.log(this.orden.length);
+    const efectivo=<HTMLInputElement>document.getElementById('efectivo');
+    if(efectivo.checked){
+      this.carritoServicio.saveOrder(this.usuario.id!,efectivo.value).subscribe(lista=>{
+      })
+      alert("orden creada,muchas gracias");
+      this.cerrarModal(); 
+    }
+  }
   }
 
 
 
+
+
+stripeData:any;
+loading:any;
+submitted:any;
+paymenStatus:any;
+  buy() {
+    this.loading=true;
+    this.submitted=true;
+    const name = this.stripeForm.get('name').value;
+    this.stripeService.createToken(this.card,{name}).subscribe(resul=>{
+      if(resul.token){
+this.stripeData['token']=resul.token;
+this.paymentService.pagar(this.stripeData).subscribe((res)=>{
+  if(res['success']){
+    this.loading=false;
+    this.submitted=false;
+    this.paymenStatus=res['status'];
+  }else{
+    this.loading=false;
+    this.submitted=false;
+    this.paymenStatus=res['status'];
+  }
+})
+
+      }else if(resul.error){
+        this.paymenStatus=resul.error.message;
+      }
+    })
+     
+  }
 }
+
+
+        

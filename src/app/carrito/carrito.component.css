@@ -440,11 +440,105 @@ svg{
 
 }
 
+#botonComprar{
+  margin-top:20px;
+}
 
 
 
 
+@media screen and (max-width:767px){
+.contenedor-carrito{
+  padding-top: 30% !important;
+}
+  /* footer*/
+  #suscripcion{
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+#su{
+  margin-top:5px;
+  width: 100%;
+}
+footer .divUno{
+  padding: 20px !important;
+}
+.divUno{
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.br{
+  padding: 5px;
+}
+svg{
+  font-size:small;
+}
+.a{
+  font-size:12px!important;
+}
+.contacto{
+  padding-left: 2px;
+}
+.contenedor-redes-sociales{
+  display:flex;
+  justify-content:center;
+}
 
+}
+
+@media screen and (max-width:500px){
+  .bt{
+    height:30px;
+    width:57%;
+    margin:5px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  }
+
+  .lista{
+    font-size: 10px;
+  }
+  .contenedor-carrito{
+    padding-top: 50% !important;
+  }
+    /* footer*/
+    #suscripcion{
+      display: block;
+      text-align: center;
+      padding: 10px;
+  }
+  #su{
+    margin-top:5px;
+    width: 100%;
+  }
+  footer .divUno{
+    padding: 20px !important;
+  }
+  .divUno{
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .br{
+    padding: 5px;
+  }
+  svg{
+    font-size:small;
+  }
+  .a{
+    font-size:12px!important;
+  }
+  .contacto{
+    padding-left: 2px;
+  }
+  .contenedor-redes-sociales{
+    display:flex;
+    justify-content:center;
+  }
+  
+  }
 
 
 

@@ -67,15 +67,59 @@
           (mouseover)="show = true"
           (mouseout)="show = false"
         >
-          <ul id="div" *ngIf="show">
-            <li class="li" *ngFor="let detalle of orden">
+          <ul id="div" class="mb-4" *ngIf="show">
+            <li class="li">
               <div class="d-flex p-1">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Precio</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let detalle of orden">
+                    <tr>
+                      <th scope="row"></th>
+                      <td>{{detalle.nombre}}</td>
+                      <td>{{detalle.cantidad}}</td>
+                      <td>{{detalle.total}}</td>
+                    </tr>
+                    <tr>
+                      <th></th>
+                     <td>asAJSGad</td>
+                    </tr>
+                  </tbody>
+                </table>
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+<!--                
                 <div class="">
                   {{ detalle.nombre }}
                 </div>
                 <div class="ps-2">
                   {{ detalle.cantidad }}
                 </div>
+                <div class="ps-2">
+                  {{detalle.total}} $
+                </div> -->
                 <br class="separador" />
               </div>
             </li>

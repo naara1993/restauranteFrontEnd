@@ -2,11 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": { "@angular/*": ["./node_modules/@angular/*"] },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

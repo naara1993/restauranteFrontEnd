@@ -309,7 +309,7 @@
         <ng-container>
           <div id="agregarElemento" class="body-modal p">
             <!--Prueba --->
-            <div *ngIf="producto" class="d-flex">
+            <div *ngIf="producto" class="i">
               <img
                 src="{{ producto.image }}"
                 class="pe-3"
@@ -320,6 +320,7 @@
               <div>
                 <nav class="nav ps-5">
                   <ul
+                  id="navUl"
                     class="text-white p-2 list-unstyled d-flex justify-content-end align-item-end"
                   >
                     <li class="nav-item">
@@ -347,8 +348,8 @@
                       {{ producto.title }}
                     </h2>
                   </div>
-                  <form
-                    class="d-flex justify-content-center align-item-center mt-4"
+                  <form id="form"
+                    class=""
                   >
                     <input
                       [(ngModel)]="can"
@@ -360,6 +361,8 @@
                       min="1"
                       placeholder="cantidad"
                       max="10"
+                      (keyup)="mostrarTotal()"
+                      (click)="mostrarTotalClick()"
                     />
 
                     <div class="ps-2">
@@ -368,7 +371,7 @@
                       <input type="hidden" id="precio" value="" />
                     </div>
                   </form>
-                  <div class="mt-5 contenido-final">
+                  <div class="mt-5 contenido-final pb-3">
                     <button
                       (click)="AgregarAlCarrito(producto.id)"
                       class="btn btn-dark"

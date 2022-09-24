@@ -23,8 +23,8 @@ export class carritoService{
       }
 
 
-      public saveOrder(id: number): Observable<Orden> {
-        return this.httpClient.get<Orden>(this.menuURL + `/save/${id}`);
+      public saveOrder(id: number,pago:string): Observable<Orden> {
+        return this.httpClient.get<Orden>(this.menuURL + `/save/${id}/${pago}`);
         }
 
 
