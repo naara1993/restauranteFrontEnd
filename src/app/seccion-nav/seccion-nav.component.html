@@ -79,17 +79,14 @@
                       <th scope="col">Precio</th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let detalle of orden">
-                    <tr>
+                  <tbody>
+                    <tr *ngFor="let detalle of orden">
                       <th scope="row"></th>
                       <td>{{detalle.nombre}}</td>
                       <td>{{detalle.cantidad}}</td>
                       <td>{{detalle.total}}</td>
-                    </tr>
-                    <tr>
-                      <th></th>
-                     <td>asAJSGad</td>
-                    </tr>
+                      <!-- <td class="invisible ">{{to}} == {{detalle.total}} * {{detalle.cantidad}}</td>
+                   -->  </tr> 
                   </tbody>
                 </table>
                

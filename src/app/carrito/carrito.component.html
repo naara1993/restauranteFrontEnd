@@ -242,55 +242,12 @@
                     <div *ngIf="error" class="alert alert-danger">
                       {{error}}
                   </div>
-                <!-- <input
-                id="numeroTarjeta1"
-                  type="number"
-                  max="4"
-                  max-length="4"
-                  min="4"
-                  placeholder="0123"
-                />
-                <span class="divider">-</span>
-                <input
-                id="numeroTarjeta2"
-                  type="number"
-                  max="4"
-                  max-length="4"
-                  min="4"
-                  placeholder="4567"
-                />
-                <span class="divider">-</span>
-                <input
-                id="numeroTarjeta3"
-                  type="number"
-                  max="4"
-                  max-length="4"
-                  min="4"
-                  placeholder="8901"
-                />
-                <span class="divider">-</span>
-                <input
-                id="numeroTarjeta4"
-                  type="number"
-                  max="4"
-                  max-length="4"
-                  min="4"
-                  placeholder="2345"
-                /> -->
               </div>
-
               <label for="">Nombre completo</label>
-              <input class="form-control" class="w-100" type="text" formControlName="name" placeholder="tu nombre">
-              <button id="botonComprar" type="submit" class="btn btn-outline-success">
+              <input class="form-control" class="w-100" type="text" formControlName="name" placeholder="tu nombre" id="nombre">
+              <button (click)="Confirmar()" id="botonComprar" type="submit" class="btn btn-outline-success">
                 Pagar
               </button>
-              <!-- <button id="purchase"
-              [disabled]="!f.valid"
-              >Pagar</button> -->
-              <p id="support">
-                Having problem with checkout?
-                <a href="#">Contact our support</a>.
-              </p>
             </form>
           </div>
         </div>
@@ -446,7 +403,27 @@
 </footer>
 
 
+<div class="o" id="pago">
 
+  <div class="modal-header ">
+    <h5 class="modal-title">¿Deseas confirmar el pago?</h5>
+    <button type="button" class="close btn-primary" aria-label="Close" (click)="cerrarT()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>Datos del pago:</h5>
+    <p><b>ID:</b> {{id}}</p>
+    <p><b>Nombre:</b> {{nombre}}</p>
+    <p><b>Descripción:</b> {{descripcion}}</p>
+    <p><b>Precio:</b> {{precio / 100}}€</p>
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button type="button" class="btn btn-success" (click)="confirmar(id)">Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="cancelar(id)">Cancelar</button>
+  </div>
+  
+  </div>
 
 
 
@@ -462,6 +439,27 @@
   </button>
 </form> -->
 
+<div class="o" id="pago">
+
+<div class="modal-header ">
+  <h5 class="modal-title">¿Deseas confirmar el pago?</h5>
+  <button type="button" class="close btn-primary" aria-label="Close" (click)="cerrarT()">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h5>Datos del pago:</h5>
+  <p><b>ID:</b> {{id}}</p>
+  <p><b>Nombre:</b> {{nombre}}</p>
+  <p><b>Descripción:</b> {{descripcion}}</p>
+  <p><b>Precio:</b> {{precio / 100}}€</p>
+</div>
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-success" (click)="confirmar(id)">Confirmar</button>
+  <button type="button" class="btn btn-danger" (click)="cancelar(id)">Cancelar</button>
+</div>
+
+</div>
 
     <script src="./js/JQuery/jquery-3.6.0.min.js"></script>
     <script src="./js/JQuery/Jquery.js"></script>

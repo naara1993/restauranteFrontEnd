@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { PaymentService } from '../service/payment.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { StripeService, Elements, Element as StripeElement, ElementsOptions } from 'ngx-stripe';
+import { PaymentIntentDto } from '../models/payment-intent-dto';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -24,7 +26,7 @@ totalF=0;
 menu:Menu[]=[];
 usuario:NuevoUsuario;
  
-
+//stripe
 error: any;
 elements: Elements;
 card: StripeElement;
@@ -33,6 +35,10 @@ elementsOptions: ElementsOptions = {
 };
 stripeForm:FormGroup;
 
+ id:any;
+ nombre:any;
+ descripcion="menu"
+ precio:number;
 // public stripeForm = new FormGroup({
 //   name: new FormControl('', Validators.required)
 // });
@@ -40,9 +46,8 @@ stripeForm:FormGroup;
 
 createForm(){
   this.stripeForm=this.fb.group({
-name:['',[Validators.required]],
-amount:['',[Validators.required]]
-
+name:['',[Validators.required]]
+//amount:['',[Validators.required]]
   });
 }
 
@@ -59,7 +64,8 @@ amount:['',[Validators.required]]
     private router: Router,
     private stripeService: StripeService,
     private paymentService: PaymentService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastrService: ToastrService
     ) { }
 
  
@@ -72,7 +78,7 @@ this.usuarioServicio.detailName(String(User)).subscribe(data => {
   this.usuario=data;
 })
 // console.log(User);
-this.loading=true;
+// this.loading=true;
 this.createForm();
 this.stripeService.elements(this.elementsOptions)
 .subscribe((elements: any) => {
@@ -180,43 +186,85 @@ cerrarModal(){
       this.carritoServicio.saveOrder(this.usuario.id!,efectivo.value).subscribe(lista=>{
       })
       alert("orden creada,muchas gracias");
-      this.cerrarModal(); 
+      this.router.navigateByUrl('/estado');
+    //  this.cerrarModal(); 
     }
   }
   }
-
-
-
-
-
-stripeData:any;
-loading:any;
-submitted:any;
-paymenStatus:any;
   buy() {
-    this.loading=true;
-    this.submitted=true;
     const name = this.stripeForm.get('name').value;
-    this.stripeService.createToken(this.card,{name}).subscribe(resul=>{
-      if(resul.token){
-this.stripeData['token']=resul.token;
-this.paymentService.pagar(this.stripeData).subscribe((res)=>{
-  if(res['success']){
-    this.loading=false;
-    this.submitted=false;
-    this.paymenStatus=res['status'];
-  }else{
-    this.loading=false;
-    this.submitted=false;
-    this.paymenStatus=res['status'];
+    this.stripeService
+      .createToken(this.card, { name })
+      .subscribe(result => {
+        if (result.token) {
+          console.log(result);
+          
+          const paymentIntentDto: PaymentIntentDto = {
+            token: result.token.id,
+            amount:this.totalF,
+            currency: 'eur',
+            description: this.descripcion
+          };
+          this.paymentService.pagar(paymentIntentDto).subscribe(
+            data => {  
+              let n=<HTMLInputElement>  document.getElementById('nombre');
+              console.log(data);  
+               this.id=data['id'];
+               this.nombre=n.value;
+               this.descripcion=data[`description`];
+               this.precio=data['amount'];
+            }
+          );
+          this.error = undefined;
+        } else if (result.error) {
+          this.error = result.error.message;
+        }
+      });
   }
-})
+  ModalPago(){
 
-      }else if(resul.error){
-        this.paymenStatus=resul.error.message;
+  }cerrarT(){
+    let m=document.getElementById('pago');
+    if(m.matches('.v')){
+      m.classList.remove('v')
+    }
+  }
+
+  Confirmar(){
+    let modal=document.getElementById('modal');
+    if(modal?.matches('.es-visible')){
+    modal?.classList.remove('es-visible');
+    }
+    let m=document.getElementById('pago')
+    m.classList.add('v');
+  }
+
+  confirmar(id: string): void {
+    this.paymentService.confirmar(id).subscribe(
+      data => {
+        this.carritoServicio.saveOrder(this.usuario.id!,'tarjeta').subscribe(lista=>{
+        })
+        alert("pago confirmado");
+        this.router.navigateByUrl('/estado');
+      //  window.location.reload();
+        
+      },
+      err => {
+        console.log(err);
       }
-    })
-     
+    );
+  }
+
+  cancelar(id: string): void {
+    this.paymentService.cancelar(id).subscribe(
+      data => {
+        alert("pago cancelado");
+           this.cerrarT();
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }
 

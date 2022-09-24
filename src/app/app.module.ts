@@ -47,7 +47,7 @@ import { EstadoOrdenComponent } from './estado-orden/estado-orden.component';
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-    NgxStripeModule.forRoot('pk_test_TYooMQauvdEDq54NiTphI7jx'),
+    NgxStripeModule.forRoot('pk_test_51LlahjGoaMNf4DNtRI1F4jecrcGGnQfaNoJMNTynMkxvm4I1zPgiTsRWnH0dkGDexKXKQV3PFZeichuTyS0kyLlM00XpWrDcsx'),
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

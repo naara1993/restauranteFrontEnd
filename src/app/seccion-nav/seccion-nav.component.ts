@@ -15,7 +15,7 @@ export class SeccionNavComponent implements OnInit {
   isLogged = false;
   orden:OrdenDetalle[];
 
-
+to:number;
   constructor(private tokenService: TokenService,private router: Router,private carritoService:Carritoservicios) { }
 
   ngOnInit(): void {

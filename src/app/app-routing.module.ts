@@ -7,6 +7,7 @@ import {IndexComponent} from './index/index.component';
 import{CarritoComponent } from './carrito/carrito.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { EstadoOrdenComponent } from './estado-orden/estado-orden.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
  {path: 'login', component:LoginRegistroComponent},
  {path: 'registro', component:RegistroLoginComponent},
  {path:'carrito',component:CarritoComponent},
+ {path:'estado',component:EstadoOrdenComponent},
  {path:'menu',component:MenuComponent,data: { expectedRol: ['admin', 'user'] } },
  {path:'contacto',component:ContactoComponent}
 ];
