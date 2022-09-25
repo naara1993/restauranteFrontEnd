@@ -1,0 +1,48 @@
+body{
+    background-color: #e2e8f0;
+    height:100vh;
+}
+
+#c{
+    border:0px;
+    margin-top:5%;
+    background-color: #e2e8f0;
+}
+#card{
+    padding-top:0px !important;
+    margin: 10px;
+}
+#section{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 20px;
+    margin:20px;
+}
+#card{
+    border:1px solid rgba(255, 0, 0, 0.696);
+}
+
+@media only screen and (max-width:500px){
+    body{
+        background-color: #e2e8f0;
+        height:auto;
+
+    }
+    #c{
+        border:0px;
+        margin-top:19%;
+        background-color: #e2e8f0;
+    }
+    #section{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          flex-direction:column;
+          padding:0px 0px !important;
+          margin:0px !important;
+    }
+    .card{
+        padding-top: 7%;
+    }
+}

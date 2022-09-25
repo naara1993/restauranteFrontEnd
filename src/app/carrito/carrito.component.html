@@ -215,10 +215,10 @@
     <!-- modal checkoit-->
 
     <div id="modal" class="modal">
-      <div id="">
-        <div class="cont d-flex justify-content-end bg-dark">
-          <button (click)="cerrarModal()" class="btn btn-primary">X</button>
-        </div>
+      <div class="b bg-dark">
+        <button (click)="cerrarModal()" class="btn btn-primary">X</button>
+      </div>
+        <div class="cont">
         <div id="container">
           <div id="left-col">
             <div id="left-col-cont">
@@ -235,7 +235,7 @@
           </div>
           <div id="right-col">
             <h2>Pago con Tarjeta</h2>
-            <form novalidate (ngSubmit)="buy()" [formGroup]="stripeForm" #f="ngForm">
+            <form id="fo" novalidate (ngSubmit)="buy()" [formGroup]="stripeForm" #f="ngForm">
               <label for="">Numero de tarjeta </label>
               <div id="card" class="mb-3" >
                   <div id="card-element" class="field"></div>

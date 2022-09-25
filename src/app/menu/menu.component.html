@@ -235,7 +235,7 @@
     <!--actualizar producto -->
 
     <div id="modalA" class="modalA d-flex justify-content-center w-100" *ngIf="isAdmin">
-      <div *ngIf="valor" class="w-100 d-flex justify-content-center" >
+      <div  class="w-100 d-flex justify-content-center" >
         <div *ngIf="men" class="mo" id="mo">
           <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
             <div class="form-group">
@@ -342,7 +342,7 @@
                     </li>
                   </ul>
                 </nav>
-                <div>
+                <div id="f">
                   <div>
                     <h2 class="titulo ps-4">
                       {{ producto.title }}

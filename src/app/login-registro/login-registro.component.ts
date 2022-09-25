@@ -39,7 +39,7 @@ export class LoginRegistroComponent implements OnInit {
   onLogin(): void {
     this.authService.detailName(this.nombreUsuario).subscribe(data=>{
       this.user=data;
-      localStorage.setItem("User", JSON.stringify(this.user.nombre));
+      localStorage.setItem("User", JSON.stringify(this.user.nombreUsuario));
     })
     this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
 

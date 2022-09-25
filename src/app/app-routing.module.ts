@@ -15,7 +15,7 @@ const routes: Routes = [
 {path:'index',component : IndexComponent},
  {path: 'login', component:LoginRegistroComponent},
  {path: 'registro', component:RegistroLoginComponent},
- {path:'carrito',component:CarritoComponent},
+ {path:'carrito',component:CarritoComponent,data: { expectedRol: ['admin', 'user'] } },
  {path:'estado',component:EstadoOrdenComponent},
  {path:'menu',component:MenuComponent,data: { expectedRol: ['admin', 'user'] } },
  {path:'contacto',component:ContactoComponent}

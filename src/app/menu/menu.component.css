@@ -156,7 +156,7 @@ main section article img {
   padding-left: 0%;
 }
 .body-modal img {
-  height: 50vh;
+  height: 52vh;
   width: 60%;
 }
 #cantidad {
@@ -343,7 +343,7 @@ label {
 #sus {
   background-color: black;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 main nav{
  margin-top:5%;
   width:100%;
@@ -376,11 +376,21 @@ margin-top: 5px;
 margin-bottom: 5px;
 }
 main section article img{
-width: 100% !important;
+width: 75% !important;
 height: auto;
 }
-
-
+.body-modal  img {
+  height: auto;
+  width: 44%;
+}
+.nav{
+  padding: 0px !important;
+  font-size: 12px;
+}
+#f{
+  font-size:12px;
+  width: 75%;
+}
 main nav h2{
 text-align: center;
 margin-left: 10px;
@@ -421,7 +431,11 @@ svg {
 .contacto {
   padding-left: 2px;
 }
-
+.m {
+  height:auto;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.975);
+}
 }
 @media screen and (max-width: 600px) {
   html{
@@ -544,7 +558,20 @@ main section  article {
 }
 }
 
-@media screen and (max-width: 1251px) {
+@media screen and (max-width: 1400px) {
+  .modal-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: fixed;
+    top: 65px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 70%;
+    width: 100%
+}
   main section {
     flex-direction: column;
     width: 80%;

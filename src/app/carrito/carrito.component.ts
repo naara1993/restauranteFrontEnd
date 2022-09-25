@@ -12,6 +12,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { StripeService, Elements, Element as StripeElement, ElementsOptions } from 'ngx-stripe';
 import { PaymentIntentDto } from '../models/payment-intent-dto';
 import { ToastrService } from 'ngx-toastr';
+import { TokenService } from '../service/token.service';
 
 
 
@@ -65,20 +66,34 @@ name:['',[Validators.required]]
     private stripeService: StripeService,
     private paymentService: PaymentService,
     private fb: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private tokenService: TokenService,
     ) { }
 
  
-
-
+    isLogged = false;
+    roles: string[];
+    isAdmin = false;
   ngOnInit(): void {
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    }); 
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      alert("Para ver el carrito debe primero ingresar con su cuenta")
+      this.router.navigate(['/login']);
+    }
+  
 this.listaDetalle();
 let  User = JSON.parse(localStorage.getItem("User")!);
 this.usuarioServicio.detailName(String(User)).subscribe(data => {
-  this.usuario=data;
+  this.usuario=data;  
 })
-// console.log(User);
-// this.loading=true;
 this.createForm();
 this.stripeService.elements(this.elementsOptions)
 .subscribe((elements: any) => {
@@ -131,10 +146,7 @@ let total=0;
   for(let i=0;i<cantidad;i++){
     total= this.orden[i].total;
     this.totalF+=total;
-    console.log(this.orden[i].total);
     }
-
-    console.log(this.totalF);
 }
 
 //eliminar de la lista
@@ -197,8 +209,6 @@ cerrarModal(){
       .createToken(this.card, { name })
       .subscribe(result => {
         if (result.token) {
-          console.log(result);
-          
           const paymentIntentDto: PaymentIntentDto = {
             token: result.token.id,
             amount:this.totalF,
@@ -207,8 +217,7 @@ cerrarModal(){
           };
           this.paymentService.pagar(paymentIntentDto).subscribe(
             data => {  
-              let n=<HTMLInputElement>  document.getElementById('nombre');
-              console.log(data);  
+              let n=<HTMLInputElement>  document.getElementById('nombre');        
                this.id=data['id'];
                this.nombre=n.value;
                this.descripcion=data[`description`];
@@ -239,10 +248,12 @@ cerrarModal(){
     m.classList.add('v');
   }
 
-  confirmar(id: string): void {
+  confirmar(id:string): void {    
     this.paymentService.confirmar(id).subscribe(
       data => {
-        this.carritoServicio.saveOrder(this.usuario.id!,'tarjeta').subscribe(lista=>{
+        console.log(this.usuario.id);
+        
+        this.carritoServicio.saveOrder(this.usuario.id,'tarjeta').subscribe(lista=>{
         })
         alert("pago confirmado");
         this.router.navigateByUrl('/estado');
@@ -255,7 +266,7 @@ cerrarModal(){
     );
   }
 
-  cancelar(id: string): void {
+  cancelar(id:string): void {
     this.paymentService.cancelar(id).subscribe(
       data => {
         alert("pago cancelado");

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { HighlightSpanKind } from 'typescript';
 import { AuthService } from '../service/auth-service';
 import { TokenService } from '../service/token.service';
 import { Menu } from './models/menu';
@@ -289,7 +290,6 @@ mostrarArticulo(id:number){
       )
   }
 
-valor:boolean;
 //actualizar articulo
   actualizarMenu(id:number):number{
     this.menuServicio.detail(id).subscribe(
@@ -307,11 +307,10 @@ valor:boolean;
    return this.id=id;
   }
   onUpdate(){  
-    this.valor=true;
     this.menuServicio.update(this.id,this.men).subscribe(
       data => {
         alert("Menu  Actualizado");
-        this.valor=false;
+        this.men=null;
         this.refresh();
         this.router.navigate(['/menu']);
       },
@@ -327,7 +326,7 @@ valor:boolean;
 }
 
 x(){
-  
+  this.men=null;
 }
 //suscripcion 
 suscripcion(){

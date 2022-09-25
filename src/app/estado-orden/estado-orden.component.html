@@ -6,15 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    
+    <!-----header----->
+    <app-seccion-nav></app-seccion-nav>
 
-
-    <div>
-        <h3>Estado del envio de la orden</h3>
-
-        
+    <!--- estado ---->
+    <div class="card text-center" id="c" >
+        <div class="card-body">
+          <h5 class="card-title ">Tus ordenes</h5>
+          <p class="card-text ">Puedes ver el estado de tus Ordenes aquí</p>
+        </div>
     </div>
+<section id="section">
+    <div class="card" id="card" *ngFor="let orden of o">
+        <div class="card-body">
+          <h5 class="card-title "> Numero de la orden 
+            <u class="text-center">
+                {{orden.numero}}
+            </u>
+        </h5>
+          <p class="card-text">Fecha Creación
+           <span>
+            {{orden.fechaCreacion}}</span>
+          </p>
+          <p class="card-text">Tipo de  pago a 
+            <span>
+             {{orden.tipoPago}}</span>
+           </p>
+           <p class="card-text">Monto total
+            <span>
+             {{orden.total}} $</span>
+           </p>
+           <p class="card-text">Estado
+            <span class="text-danger">
+            Pendiente</span>
+           </p>
 
-
-</body>
+           <a href="#!"  class="btn btn-danger"> Ver mas detalle </a>
+        </div>
+      </div>
+</section>
+  </body>
 </html>

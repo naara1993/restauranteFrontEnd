@@ -30,7 +30,7 @@ header nav{
   #user{
   align-items:center;
   width: 25%;
-  margin-left: 10%;
+  margin-left: 21%;
   width: 25%;
 
   }
@@ -76,4 +76,6 @@ header nav{
     border:2px solid black;
   }
 
-  
+  #estado{
+    visibility:hidden;
+  }
