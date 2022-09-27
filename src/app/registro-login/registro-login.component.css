@@ -55,7 +55,10 @@ footer .divUno {
   width: 40%;
 }
 
-
+#img{
+  width: 100%;
+  height: 55vh;
+}
 @media screen and (max-width:600px){
   html{
     width:121vw !important;

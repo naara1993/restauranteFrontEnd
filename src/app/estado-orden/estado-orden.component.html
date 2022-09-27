@@ -1,49 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
     <!-----header----->
     <app-seccion-nav></app-seccion-nav>
 
     <!--- estado ---->
-    <div class="card text-center" id="c" >
-        <div class="card-body">
-          <h5 class="card-title ">Tus ordenes</h5>
-          <p class="card-text ">Puedes ver el estado de tus Ordenes aquí</p>
-        </div>
+    <div *ngIf="!isAdmin" class="card text-center" id="c">
+      <div class="card-body">
+        <h5 class="card-title">Tus ordenes</h5>
+        <p class="card-text">Puedes ver el estado de tus Ordenes aquí</p>
+      </div>
     </div>
-<section id="section">
-    <div class="card" id="card" *ngFor="let orden of o">
+    <section *ngIf="!isAdmin" id="section">
+      <div class="card" id="card" *ngFor="let orden of o">
         <div class="card-body">
-          <h5 class="card-title "> Numero de la orden 
+          <h5 class="card-title">
+            Numero de la orden
             <u class="text-center">
-                {{orden.numero}}
+              {{ orden.numero }}
             </u>
-        </h5>
-          <p class="card-text">Fecha Creación
-           <span>
-            {{orden.fechaCreacion}}</span>
+          </h5>
+          <p class="card-text">
+            Fecha Creación
+            <span> {{ orden.fechaCreacion }}</span>
           </p>
-          <p class="card-text">Tipo de  pago a 
-            <span>
-             {{orden.tipoPago}}</span>
-           </p>
-           <p class="card-text">Monto total
-            <span>
-             {{orden.total}} $</span>
-           </p>
-           <p class="card-text">Estado
-            <span class="text-danger">
-            Pendiente</span>
-           </p>
+          <p class="card-text">
+            Tipo de pago a
+            <span> {{ orden.tipoPago }}</span>
+          </p>
+          <p class="card-text">
+            Monto total
+            <span> {{ orden.total }} $</span>
+          </p>
+          <p class="card-text">
+            Estado
+            <span class="text-danger"> Pendiente</span>
+          </p>
 
-           <a href="#!"  class="btn btn-danger"> Ver mas detalle </a>
+          <a (click)="mostrar(orden.id)" class="btn btn-danger">
+            Ver mas detalle
+          </a>
         </div>
       </div>
-</section>
+    </section>
+
+    <section class="sec" *ngIf="isAdmin">
+      <div class="h2 text-center">
+        <h2 class="h2 b">Lista de ordenes de los usuarios</h2>
+      </div>
+      <div class="section-card mt-5">
+        <div
+          class="card col-md-3 col-lg-2 col-sm-12"
+          id="card"
+          *ngFor="let orden of orden"
+        >
+          <div class="card-body">
+            <h5 class="card-title">
+              Numero de la orden
+              <u class="text-center">
+                {{ orden.numero }}
+              </u>
+            </h5>
+            <p class="card-text">
+              Fecha Creación
+              <span> {{ orden.fechaCreacion }}</span>
+            </p>
+            <p class="card-text">
+              Usuario
+              <span> {{ orden.usuario.nombre }}</span>
+            </p>
+            <p class="card-text">
+              Tipo de pago a
+              <span> {{ orden.tipoPago }}</span>
+            </p>
+            <p class="card-text">
+              Monto total
+              <span> {{ orden.total }} $</span>
+            </p>
+            <p class="card-text">
+              Estado
+              <span class="text-danger"> Pendiente</span>
+            </p>
+            <div class="d-flex">
+              <a (click)="mostrar(orden.id)" class="btn btn-danger">
+                Ver mas detalle
+              </a>
+              <button (click)="cancelar(orden.id)" class="btn btn-danger ms-2">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section>
+      <div class="card" *ngFor="let orden of menu">
+        <img src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ orden.menu.title }}</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </section> -->
+
+    <div class="container modal" id="modal">
+      <div class="window">
+        <div class="order-info">
+          <div class="order-info-content">
+            <div class="d">
+              <h2>Detalle de la orden</h2>
+              <button (click)="cerrar()" class="btn btn-dark boton ms-5">
+                X
+              </button>
+            </div>
+            <div class="line"></div>
+            <table class="order-table">
+              <tbody *ngFor="let orden of menu">
+                <tr>
+                  <td>
+                    <img
+                      src="{{ orden.menu.image }}"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    <br />
+                    <span class="thin">{{ orden.menu.title }}</span>
+                    <br /><br />
+                    <span class="thin small">
+                      cantidad: {{ orden.cantidad }}</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+              </tbody>
+              <div class="line"></div>
+              <div class="total">
+                <span class="w-50" style="float: left">
+                  <div class="thin dense">Delivery</div>
+                  <div class="thin dense">Costo</div>
+                  TOTAL
+                </span>
+                <span class="w-50" style="float: right; text-align: right">
+                  <div class="thin dense">$0</div>
+                  <div class="thin dense">$0</div>
+                  $ {{ total }}
+                </span>
+              </div>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

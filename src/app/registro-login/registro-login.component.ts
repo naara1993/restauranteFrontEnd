@@ -48,7 +48,7 @@ export class RegistroLoginComponent implements OnInit {
 
     this.authService.nuevo(this.usuario).subscribe(
       (_data) => {
-        alert('cuenta creada');
+        alert('cuenta creada y recibio un correo con su nombre de usuario y contraseña');
         this.router.navigate(['/login']);
       },
       (err) => {

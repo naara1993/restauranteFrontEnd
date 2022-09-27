@@ -21,6 +21,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 
 import {  ReactiveFormsModule } from '@angular/forms';
 import { EstadoOrdenComponent } from './estado-orden/estado-orden.component';
+import { LocalesComponent } from './locales/locales.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EstadoOrdenComponent } from './estado-orden/estado-orden.component';
     CarritoComponent,
     ContactoComponent,
     EstadoOrdenComponent,
+    LocalesComponent,
 
 
   ],

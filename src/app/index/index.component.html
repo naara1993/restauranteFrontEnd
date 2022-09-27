@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <app-seccion-nav></app-seccion-nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <app-seccion-nav></app-seccion-nav>
 
-<!----- main ------>
-<main
-  style="height: 100vh;background-size: cover;"
-  [ngStyle]="{ 
-    background: 'url(assets/fondo7.jpg) no-repeat'}"
->
-;
-  <div class="jumbotron jum mt-5">
-    <h1 class="titulo display-4">Restaurante</h1>
-    <p class="titulo parrafo lead">
-      Bienvenidos a nuestra pagina de RestComidas
-    </p>
+    <!----- main ------>
+    <main
+      style="height: 85vh; background-size: cover"
+      [ngStyle]="{
+        background: 'url(assets/fondo7.jpg) no-repeat'
+      }"
+    >
+      ;
+      <div class="jumbotron jum mt-5">
+        <h1 class="titulo display-4">Restaurante</h1>
+        <p class="titulo parrafo lead">
+          Bienvenidos a nuestra pagina de RestComidas
+        </p>
 
-    <p class="titulo">La sensatez y el estómago vacío no se la llevan bien.</p>
-    <p class="titulo lead">
-      <!-----------------------------
+        <p class="titulo">
+          La sensatez y el estómago vacío no se la llevan bien.
+        </p>
+        <p class="titulo lead">
+          <!-----------------------------
             <a
               class="parrafo2 titulo btn btn-primary btn-lg"
               href="#"
@@ -32,42 +35,302 @@
             >              
               ----------------------------------->
 
-      <button class="btn btn-primary" (click)="abrirModal()">
-        Nuestra historia
-      </button>
-    </p>
-  </div>
-
-  <div class="m">
-
-
-  <div id="modal1" class="modal1">
-    <div class="modal-cerrar">
-      <button class="btn btn-dark" (click)="cerrarModal()">cerrar</button>
+          <button class="btn btn-primary" (click)="abrirModal()">
+            Un nuevo concepto
+          </button>
+        </p>
+      </div>
+    </main>
+    <!--about-->
+    <div id="contenedor-div" class="text-white container d-flex mt-5">
+      <div class="row">
+        <img
+          id="img-f"
+          class="img-fluid"
+          src="assets/rest.jpg"
+          alt="Card image cap"
+        />
+      </div>
+      <div class="bg-dark body">
+        <h2>About Us</h2>
+        <p>
+          Pesto is a family owned and operated Italian Restaurant offering a
+          combination of fresh ingredients and authentic Italian cooking.
+        </p>
+        <p>
+          We will make sure you are served the most authentic and fresh Italian
+          dishes, while offering the best customer service. Our kitchen is
+          committed to providing our guests with the best Italian Cuisine.
+        </p>
+        <img src="assets/l.png" alt="" width="140" height="70" />
+      </div>
     </div>
-    <div class="modal-contenido">
-      <img src="assets/restaurant-interior.jpg" alt="" />
-      <p class="quienes-somos">
-        <u
-          ><b><i>UN CONCEPTO NUEVO</i></b></u
-        >
-        <br />
-        Modernos en el estilo y clásicos en el sabor. Un equipo de profesionales
-        que hemos creado el restaurante donde nos gustaría comer a diario y en
-        las ocasiones especiales. Con menú o a la carta. Con amigos o con
-        clientes, con tiempo para disfrutar o con algo más de prisa porque el
-        trabajo lo requiere. Firmes defensores de que calidad no está en el
-        precio, sino en el producto. Exigentes porque también somos consumidores
-        y estamos convencidos de que la experiencia debe resultar completa. Un
-        buen restaurante ha de serlo por la comida, pero también por el trato y
-        el entorno, por la decoración y el ambiente. Somos nuevos, pero también
-        somos expertos. Natural Lunch, nuestro restaurante en La Finca
-        (Pozuelo), nos ha permitido crecer y creer. Sabemos más y queremos
-        demostrarlo.
-      </p>
+
+    <!--Nuevas Recetas-->
+    <div class="container text-dark">
+      <div class="jumbotron jum mt-1">
+        <h1 class="text-dark display-3">Featured Offers</h1>
+        <p class="p">
+          We offer a great variety of the best Italian dishes to our visitors
+          and guests. Below are some of our most popular main dishes and
+          desserts.
+        </p>
+      </div>
+      <!--fotos card-->
+      <section class="mt-5 mb-3">
+        <div class="card-group p-1" id="seccion-nuevas-recetas">
+          <div class="card">
+            <img src="assets/s.jpg" class="card-img-top" alt="..." />
+            <div class="card-body text-center">
+              <h5 class="card-title">Proximamente</h5>
+              <p class="card-text">Nuevo plato</p>
+              <p class="card-text"><small class="text-danger">000$</small></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/s.jpg" class="card-img-top" alt="..." />
+            <div class="card-body text-center">
+              <h5 class="card-title">Proximamente</h5>
+              <p class="card-text">Nuevo plato</p>
+              <p class="card-text"><small class="text-danger">000$</small></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/s.jpg" class="card-img-top" alt="..." />
+            <div class="card-body text-center">
+              <h5 class="card-title">Proximamente</h5>
+              <p class="card-text">Nuevo plato</p>
+              <p class="card-text"><small class="text-danger">000$</small></p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
-</div>
-</main>
-</body>
+
+    <!--galeria-->
+    <section id="galeria" class="mb-5">
+      <!-- Gallery -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 contenedor">
+            <img
+              id="im"
+              height="65%"
+              src="assets/a.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Boat on Calm Water"
+            />
+            <img
+              id="im"
+              height="35%"
+              src="assets/f.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Wintry Mountain Landscape"
+            />
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <img
+              id="im"
+              src="assets/d.jpg"
+              class="w-100 h-50 shadow-1-strong rounded mb-4"
+              alt="Mountains in the Clouds"
+            />
+
+            <img
+              id="im"
+              src="assets/f.jpg"
+              class="w-100 h-40 shadow-1-strong rounded mb-4"
+              alt="Boat on Calm Water"
+            />
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <img
+              id="im"
+              height="60%"
+              src="assets/b.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Waves at Sea"
+            />
+            <img
+              id="im"
+              height="40%"
+              src="assets/b.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Wintry Mountain Landscape"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Gallery -->
+    </section>
+
+    <!--modal-->
+    <div class="m">
+      <div id="modal1" class="modal1">
+        <div class="modal-cerrar">
+          <button class="btn btn-dark" (click)="cerrarModal()">cerrar</button>
+        </div>
+        <div class="modal-contenido">
+          <img src="assets/restaurant-interior.jpg" alt="" />
+          <p class="quienes-somos">
+            <u
+              ><b><i>UN CONCEPTO NUEVO</i></b></u
+            >
+            <br />
+            Modernos en el estilo y clásicos en el sabor. Un equipo de
+            profesionales que hemos creado el restaurante donde nos gustaría
+            comer a diario y en las ocasiones especiales. Con menú o a la carta.
+            Con amigos o con clientes, con tiempo para disfrutar o con algo más
+            de prisa porque el trabajo lo requiere. Firmes defensores de que
+            calidad no está en el precio, sino en el producto. Exigentes porque
+            también somos consumidores y estamos convencidos de que la
+            experiencia debe resultar completa. Un buen restaurante ha de serlo
+            por la comida, pero también por el trato y el entorno, por la
+            decoración y el ambiente. Somos nuevos, pero también somos expertos.
+            Natural Lunch, nuestro restaurante en La Finca (Pozuelo), nos ha
+            permitido crecer y creer. Sabemos más y queremos demostrarlo.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--main-->
+
+    <!----------------- footer  --------------->
+
+    <footer class="bg-dark container-fluid">
+      <!--row-->
+      <div class="row divUno">
+        <div class="col-md-4 col-lg-4 col-sm-12 br">
+          <ul class="list-unstyled lista text-white">
+            <li>
+              <a href="./index.html" routerLink="">home</a>
+            </li>
+            <li>
+              <a href="./menu.html" routerLink="/menu">menu</a>
+            </li>
+            <li>
+              <a href="./contacto.html" routerLink="/contacto">contacto</a>
+            </li>
+            <li>
+              <a href="./locales.html">locales</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-sm-12 br">
+          <ul class="list-unstyled lista mt-3 text-white">
+            <li>
+              <a href="./index.html">blog</a>
+            </li>
+            <li>
+              <a href="./menu.html">cupones</a>
+            </li>
+            <li>
+              <a href="./contacto.html">Reseña</a>
+            </li>
+            <li>
+              <a href="./locales.html">Opiniones</a>
+            </li>
+          </ul>
+        </div>
+        <br class="br" />
+        <div class="col-md-4 col-lg-4 col-sm-12 br">
+          <ul class="mt-3 text-white list-unstyled lista contacto">
+            <li>
+              <a class="a" href="#!">
+                <i class="fa-solid fa-mobile-screen"></i>
+                4444-2222
+              </a>
+            </li>
+            <li>
+              <a class="a" href="#!">
+                <i class="fa-solid fa-envelope"></i>
+                rrrrr@gmail.com
+              </a>
+            </li>
+            <li>
+              <a class="a" href="#!">
+                <i class="fa-solid fa-map-location"></i>
+                local juan 3333
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!--/row-->
+      </div>
+
+      <div class="container-fluid">
+        <!--row-->
+        <div class="row contacto-suscripcion mt-3">
+          <!--col-->
+          <div class="col-md-5 col-lg-4 col-sm-12">
+            <div class="contenedor-redes-sociales d-flex mt-3">
+              <h5 class="text-uppercase text-white mb-3">
+                <i><b> Seguinos</b></i>
+              </h5>
+              <ul class="list-unstyled d-inline-flex ms-3">
+                <li class="pe-4">
+                  <a href="#!" class="text-white">
+                    <i class="fa-brands fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="pe-4">
+                  <a href="#!" class="text-white">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="pe-4">
+                  <a href="#!" class="text-white">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/col-->
+
+          <!--col-->
+          <div class="col-md-7 col-lg-6 col-sm-12">
+            <form novalidate #f="ngForm" action="" id="suscripcion">
+              <label for="suscribete" class="text-white pe-1 label-suscribite"
+                ><u>
+                  <b><i>Suscribite y recibe nuevas novedades</i></b>
+                </u>
+              </label>
+              <input
+                id="su"
+                placeholder="email"
+                autocomplete="on"
+                type="email"
+                class="form-control"
+                name="correo"
+                placeholder="Correo"
+                required
+                #correo="ngModel"
+                [ngModel]=""
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [ngClass]="{
+                  'is-invalid animated shake': correo.invalid && correo.touched
+                }"
+              />
+              <button
+                [disabled]="!f.valid"
+                id="sus"
+                title="ingresa tu email para suscribirte"
+                class="btn btn-dark"
+              >
+                suscribirse
+              </button>
+            </form>
+            <!--col-->
+          </div>
+          <!--/row-->
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

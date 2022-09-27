@@ -109,104 +109,104 @@ footer .divUno {
   background-color: rgba(255, 255, 255, 0.581);
   width: 40%;
 }
-@media screen and (max-width:600px){
-  html{
-    width:110vw !important;
+@media screen and (max-width: 600px) {
+  html {
+    width: 110vw !important;
   }
-/*formulario*/
-.contenedor {
-  padding-top: 31% !important;
-  padding-bottom: 5%;
-  background-color: #e2e8f0;
-}
-
-textarea,input[type="text"],input[type="email"] {
-  width: 70vw;
-  height:8vh;
-  margin-left: 5px;
-}
-#button{
-  padding: 0 !important;
-  width: auto;
-  height: auto;
-}
-  /* footer*/
-  #suscripcion{
-    display: block;
-    text-align: center;
-    padding: 10px;
-}
-#su{
-  margin-top:5px;
-  width: 100%;
-}
-footer .divUno{
-  padding: 20px !important;
-}
-.divUno{
-  margin: 0px !important;
-  padding: 0px !important;
-}
-.br{
-  border-bottom:1px solid white;
-  padding: 5px;
-}
-svg{
-  font-size:small;
-}
-.a{
-  font-size:12px!important;
-}
-.contacto{
-  padding-left: 2px;
-}
-}
-
-
-@media screen and (max-width:900px){
+  /*formulario*/
   .contenedor {
-    padding-top:15%;
+    padding-top: 31% !important;
     padding-bottom: 5%;
     background-color: #e2e8f0;
   }
-  
-  #button{
+
+  textarea,
+  input[type="text"],
+  input[type="email"] {
+    width: 70vw;
+    height: 8vh;
+    margin-left: 5px;
+  }
+  #button {
     padding: 0 !important;
     width: auto;
     height: auto;
   }
-    /* footer*/
-    #suscripcion{
-      display: block;
-      text-align: center;
-      padding: 10px;
+  /* footer*/
+  #suscripcion {
+    display: block;
+    text-align: center;
+    padding: 10px;
   }
-  #su{
-    margin-top:5px;
+  #su {
+    margin-top: 5px;
     width: 100%;
   }
-  footer .divUno{
+  footer .divUno {
     padding: 20px !important;
   }
-  .divUno{
+  .divUno {
     margin: 0px !important;
     padding: 0px !important;
   }
-  .br{
+  .br {
+    border-bottom: 1px solid white;
     padding: 5px;
   }
-  svg{
-    font-size:small;
+  svg {
+    font-size: small;
   }
-  .a{
-    font-size:12px!important;
+  .a {
+    font-size: 12px !important;
   }
-  .contacto{
+  .contacto {
     padding-left: 2px;
   }
-  .contenedor-redes-sociales{
-    display:flex;
-    justify-content:center;
+}
+
+@media screen and (max-width: 900px) {
+  .contenedor {
+    padding-top: 15%;
+    padding-bottom: 5%;
+    background-color: #e2e8f0;
   }
 
+  #button {
+    padding: 0 !important;
+    width: auto;
+    height: auto;
+  }
+  /* footer*/
+  #suscripcion {
+    display: block;
+    text-align: center;
+    padding: 10px;
+  }
+  #su {
+    margin-top: 5px;
+    width: 100%;
+  }
+  footer .divUno {
+    padding: 20px !important;
+  }
+  .divUno {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .br {
+    padding: 5px;
+  }
+  svg {
+    font-size: small;
+  }
+  .a {
+    font-size: 12px !important;
+  }
+  .contacto {
+    padding-left: 2px;
+  }
+  .contenedor-redes-sociales {
+    display: flex;
+    justify-content: center;
+  }
 }

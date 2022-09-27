@@ -20,7 +20,10 @@ export class SeccionNavComponent implements OnInit {
   orden:OrdenDetalle[];
   usuario: NuevoUsuario;
   ord: Orden[] = [];
-to:number;
+  o: Orden[] = [];
+  to:number;
+  isAdmin=false;
+  roles: string[];
   constructor(private tokenService: TokenService
     ,private router: Router
     ,private carritoService:Carritoservicios
@@ -36,21 +39,26 @@ to:number;
     this.carritoService.detalle().subscribe(
       data => {
         this.orden = data;
-        console.log(this.orden);
-        
         this.ver(this.orden.length);
       },
       err => {
         console.log(err);
       }
     );
-
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    }); 
     let User = JSON.parse(localStorage.getItem('User')!);
     this.usuarioServicio.detailName(String(User)).subscribe((data) => {
       this.usuario = data;
       this.listaOrdenesUsuarios.detail(this.usuario.id).subscribe((data) => {
-        this.orden = data;
-        if(this.orden.length>=0){
+        this.ord = data;
+        if(this.ord.length>=0){
+          console.log(this.ord.length);
+          
           let estado=document.getElementById('estado');
           estado.style.visibility="visible";
         }
@@ -60,6 +68,18 @@ to:number;
         }
       });
     });
+    if(this.isAdmin){
+      this.listaOrdenesUsuarios.listOrdenes().subscribe(lista => {
+        if(this.o.length>=0){
+          let estado=document.getElementById('estado');
+          estado.style.visibility="visible";
+        }
+        else{
+          let estado=document.getElementById('estado');
+          estado.style.visibility="hidden";
+        }
+      })
+    }
   }
 
 

@@ -28,5 +28,9 @@ export class carritoService{
         }
 
 
+        public delete(id:number): Observable<any> {
+          return this.httpClient.delete<any>(this.menuURL + `/delete/${id}`);
+        }
 
+    
     }

@@ -13,4 +13,7 @@ export class ordenRealizadasUser {
   public detail(id: number): Observable<any> {
     return this.httpClient.get<any>(this.OrdenListaUsuariosURL + `listaOrdenesUsuario/${id}`);
   }
+  public listOrdenes(): Observable<any> {
+    return this.httpClient.get<any>(this.OrdenListaUsuariosURL + `listaOrden`);
+  }
 }

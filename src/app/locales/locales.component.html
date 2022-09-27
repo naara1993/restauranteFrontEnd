@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <app-seccion-nav></app-seccion-nav>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <h3 class="h3 text-center">Nuestros Locales</h3>
+        </div>
+        <div class="cont">
+          <div class=" con cont">
+            <div id="n ">
+              <div class="datos-locales d-block" *ngFor="let locales of local">
+                <p>
+                  <i class="fa-solid fa-map"></i>
+                  {{ locales.local }}
+                </p>
+                <p>
+                  <i class="fa-solid fa-phone"></i>
+                  {{ locales.telefono }}
+                </p>
+                <p><i class="fa-solid fa-envelope"></i> {{ locales.email }}</p>
+              </div>
+              
+            </div>
+            <div id="mapa" class="img-fluid">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d26270.621725095803!2d-58.451558399999996!3d-34.6085178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1664275472771!5m2!1ses-419!2sar"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!----------------- footer  --------------->
+
+    <footer class="bg-dark container-fluid">
+      <!--row-->
+      <div class="row divUno">
+        <div class="col-md-4 col-lg-4 col-sm-12 br">
+          <ul class="list-unstyled lista text-white">
+            <li>
+              <a href="./index.html" routerLink="">home</a>
+            </li>
+            <li>
+              <a href="./menu.html" routerLink="/menu">menu</a>
+            </li>
+            <li>
+              <a href="./contacto.html" routerLink="/contacto">contacto</a>
+            </li>
+            <li>
+              <a href="./locales.html">locales</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-sm-12 br">
+          <ul class="list-unstyled lista mt-3 text-white">
+            <li>
+              <a href="./index.html">blog</a>
+            </li>
+            <li>
+              <a href="./menu.html">cupones</a>
+            </li>
+            <li>
+              <a href="./contacto.html">Reseña</a>
+            </li>
+            <li>
+              <a href="./locales.html">Opiniones</a>
+            </li>
+          </ul>
+        </div>
+        <br class="br" />
+        <div class="col-md-4 col-lg-4 col-sm-12 br">
+          <ul class="mt-3 text-white list-unstyled lista contacto">
+            <li>
+              <a class="a" href="#!">
+                <i class="fa-solid fa-mobile-screen"></i>
+                4444-2222
+              </a>
+            </li>
+            <li>
+              <a class="a" href="#!">
+                <i class="fa-solid fa-envelope"></i>
+                rrrrr@gmail.com
+              </a>
+            </li>
+            <li>
+              <a class="a" href="#!">
+                <i class="fa-solid fa-map-location"></i>
+                local juan 3333
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!--/row-->
+      </div>
+
+      <div class="container-fluid">
+        <!--row-->
+        <div class="row contacto-suscripcion mt-3">
+          <!--col-->
+          <div class="col-md-5 col-lg-4 col-sm-12">
+            <div class="contenedor-redes-sociales d-flex mt-3">
+              <h5 class="text-uppercase text-white mb-3">
+                <i><b> Seguinos</b></i>
+              </h5>
+              <ul class="list-unstyled d-inline-flex ms-3">
+                <li class="pe-4">
+                  <a href="#!" class="text-white">
+                    <i class="fa-brands fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="pe-4">
+                  <a href="#!" class="text-white">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="pe-4">
+                  <a href="#!" class="text-white">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/col-->
+
+          <!--col-->
+          <div class="col-md-7 col-lg-6 col-sm-12">
+            <form novalidate #f="ngForm" action="" id="suscripcion">
+              <label for="suscribete" class="text-white pe-1 label-suscribite"
+                ><u>
+                  <b><i>Suscribite y recibe nuevas novedades</i></b>
+                </u>
+              </label>
+              <input
+                id="su"
+                placeholder="email"
+                autocomplete="on"
+                type="email"
+                class="form-control"
+                name="correo"
+                placeholder="Correo"
+                required
+                #correo="ngModel"
+                [ngModel]=""
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [ngClass]="{
+                  'is-invalid animated shake': correo.invalid && correo.touched
+                }"
+              />
+              <button
+                [disabled]="!f.valid"
+                id="sus"
+                title="ingresa tu email para suscribirte"
+                class="btn btn-dark"
+              >
+                suscribirse
+              </button>
+            </form>
+            <!--col-->
+          </div>
+          <!--/row-->
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
