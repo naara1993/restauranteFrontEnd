@@ -34,16 +34,7 @@ export class SeccionNavComponent implements OnInit {
     private http: HttpClient
     ) { }
  
-prueba:any;
-
-    getOrden() {
-      this.http.get("http://localhost:8080/gestionPedidos/lis").subscribe(data => {
-      this.prueba=data;
-    });
-    }
-
   ngOnInit(): void {
-    this.getOrden();
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
@@ -113,6 +104,10 @@ prueba:any;
       notificacion!.append(
         `${cantidad}`
       )
+    }else{
+      if(notificacion.matches('.es-visible')){
+        notificacion.classList.remove('es-visible');
+      }
     }
   }
   //salir login

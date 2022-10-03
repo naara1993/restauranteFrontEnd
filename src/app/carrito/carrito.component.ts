@@ -70,6 +70,8 @@ export class CarritoComponent implements OnInit {
     private fb: FormBuilder,
     private toastrService: ToastrService,
     private tokenService: TokenService
+
+
   ) {}
 
   isLogged = false;
@@ -182,14 +184,42 @@ export class CarritoComponent implements OnInit {
       this.totalF += total;
     }
   }
+actualizar(){
+  this.ordenServicio.detalle().subscribe(
+    data => {
+      this.orden = data;
+      this.ver(this.orden.length);
+    },
+    err => {
+      console.log(err);
+    }
+  );
+}
+//mostrar cantidad
+ver(cantidad:number){
 
+  let notificacion=document.getElementById('mostrarNotificacion');
+  notificacion.innerHTML='';
+  if(cantidad>0){
+    notificacion?.classList.add('es-visible');
+    notificacion!.append(
+      `${cantidad}`
+    )
+  }else{
+    if(notificacion.matches('.es-visible')){
+      notificacion.classList.remove('es-visible');
+    }
+  }
+}
   //eliminar de la lista
   eliminar(id: number) {
     this.carritoServicio.eliminar(id).subscribe(
       (data) => {
         alert('eliminado de la lista');
+        this.totalF=0;
         this.listaDetalle();
-   //     window.location.reload();
+        this.envio();
+        this.actualizar();
       },
       (error) => {
         alert('error' + error);

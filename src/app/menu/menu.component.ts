@@ -277,8 +277,9 @@ mostrarArticulo(id:number){
     data => {
       alert('producto agregado al menu OK',); 
       this.cerrarModal();
-      window.location.reload();
-      this.router.navigate(['/menu']);
+      this.cargarMenu();
+      // window.location.reload();
+      // this.router.navigate(['/menu']);
     },
     err => {
       alert("ocurrio un problema al crear el articulo para el menu")
@@ -319,8 +320,10 @@ mostrarArticulo(id:number){
       data => {
         alert("Menu  Actualizado");
         this.men=null;
-        this.refresh();
-        this.router.navigate(['/menu']);
+      this.cargarMenu();
+
+        // this.refresh();
+        // this.router.navigate(['/menu']);
       },
       err => {
        alert(err)
