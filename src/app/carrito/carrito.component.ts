@@ -94,6 +94,8 @@ export class CarritoComponent implements OnInit {
       this.env = true;
       this.costEnvio = 0;
       this.totalF= this.totalF-400;
+      exampleInputNumber.value=null;
+      exampleInputEmail1.value=null;
     } else {
       exampleInputEmail1.disabled = false;
       exampleInputNumber.disabled = false;
@@ -187,7 +189,7 @@ export class CarritoComponent implements OnInit {
       (data) => {
         alert('eliminado de la lista');
         this.listaDetalle();
-        window.location.reload();
+   //     window.location.reload();
       },
       (error) => {
         alert('error' + error);

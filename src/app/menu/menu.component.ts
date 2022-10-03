@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -39,6 +40,7 @@ export class MenuComponent implements OnInit {
     private elementRef:ElementRef,
      private renderer:Renderer2,
     private carritoServicio:Carritoservicios,
+    private http: HttpClient
     ) {
      }
 
@@ -110,7 +112,12 @@ mostrarProductosB(menu:Menu[]) {
 // ngAfterViewInit() {
 //   this.renderer.listen(this.elementRef.nativeElement, 'click', (event) => { this.AgregarAlCarrito(this.id);});
 // }
-
+prueba:any;
+getOrden() {
+  this.http.get("http://localhost:8080/gestionPedidos/lis").subscribe(data => {
+  this.prueba=data;
+});
+}
 
 ord:OrdenDetalle[];
  AgregarAlCarrito(id:number) {
@@ -129,7 +136,7 @@ let ingresado:boolean=false;
 this.carritoServicio.addCart(id,this.can).subscribe(
   data => {        
     for(let i=0;i<this.ord.length;i++){
-      console.log(this.ord[i]);
+
     if(this.ord[i].menu.id==id){
      ingresado=true;
      break;
@@ -140,11 +147,12 @@ this.carritoServicio.addCart(id,this.can).subscribe(
    }
    if(!(ingresado)){
     this.orden=data;
-    alert("agregado al carrito");
     
-     this.refresh();
-  
-  //  window.location.reload();
+    alert("agregado al carrito");
+     this.router.navigate(['/menu']).then(()=>
+     window.location.reload())
+   // this.refresh();
+  // window.location.reload();
    }
    if(ingresado){
     alert("el producto ya esta en la lista");

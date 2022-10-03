@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Orden } from '../carrito/carritoModels/orden';
@@ -29,9 +30,20 @@ export class SeccionNavComponent implements OnInit {
     ,private router: Router
     ,private carritoService:Carritoservicios
     ,private listaOrdenesUsuarios: ordenRealizadasUser,
-    private usuarioServicio: AuthService) { }
+    private usuarioServicio: AuthService,
+    private http: HttpClient
+    ) { }
+ 
+prueba:any;
+
+    getOrden() {
+      this.http.get("http://localhost:8080/gestionPedidos/lis").subscribe(data => {
+      this.prueba=data;
+    });
+    }
 
   ngOnInit(): void {
+    this.getOrden();
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
