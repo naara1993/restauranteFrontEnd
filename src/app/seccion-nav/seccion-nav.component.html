@@ -1,6 +1,6 @@
 <!--------  header   ---------------->
-<header class="row">
-  <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+<header id="header" class="row">
+  <nav class="navbar fixed-top navbar-expand-md navbar-dark " id="head">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img
@@ -35,9 +35,9 @@
               >Contacto</a
             >
           </li>
-          <li class="nav-item"><a class="nav-link" href="#"
-            routerLink="/locales"
-            >Locales</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/locales">Local</a>
+          </li>
         </div>
       </div>
     </div>
@@ -84,41 +84,14 @@
                   <tbody>
                     <tr *ngFor="let detalle of orden">
                       <th scope="row"></th>
-                      <td>{{detalle.nombre}}</td>
-                      <td>{{detalle.cantidad}}</td>
-                      <td>{{detalle.total}}</td>
+                      <td>{{ detalle.nombre }}</td>
+                      <td>{{ detalle.cantidad }}</td>
+                      <td>{{ detalle.total }}</td>
                       <!-- <td class="invisible ">{{to}} == {{detalle.total}} * {{detalle.cantidad}}</td>
-                   -->  </tr> 
+                   -->
+                    </tr>
                   </tbody>
                 </table>
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-<!--                
-                <div class="">
-                  {{ detalle.nombre }}
-                </div>
-                <div class="ps-2">
-                  {{ detalle.cantidad }}
-                </div>
-                <div class="ps-2">
-                  {{detalle.total}} $
-                </div> -->
                 <br class="separador" />
               </div>
             </li>
@@ -127,9 +100,13 @@
         <a href="./carrito.html" routerLink="/carrito">
           <i id="icono" class="fa-solid fa-cart-shopping"></i>
         </a>
-
         <a id="estado" href="./estado.html" routerLink="/estado">
-          <i id="icono" class="fa-brands fa-first-order text-white me-2 ms-3"></i>
+          <i id="icono" class="fa-solid fa-truck text-white me-2 ms-3"> </i>
+          <span
+            id="not"
+            class="not translate-middle p-1 bg-danger border border-light rounded-circle"
+          >
+          </span>
         </a>
       </div>
     </div>

@@ -6,7 +6,46 @@
 
 .bigicon {
   font-size: 35px;
-  color: #36a0ff;
+  color: #000000;
+}
+.transparent {
+  background-color:rgb(6, 124, 249) !important;
+}
+
+/*contacto*/
+.datos-contacto {
+  height: auto;
+  width: 30%;
+  margin-top: 5%;
+  margin-left: 1%;
+  text-align: center;
+}
+.parrafo {
+  width: 60%;
+}
+.p {
+  padding-top: 10%;
+  font-weight: bold;
+  font-size: x-large;
+}
+#contacto {
+  /* background-color: lightyellow; */
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-muted{
+  margin-top:3%;
+  font-size: medium !important;
+}
+.ic {
+  font-size: 7rem;
+  color: rgb(42, 39, 39);
+}
+.contenedor-contacto {
+  margin: 5% 0px 0px 15%;
+  width: 100%;
 }
 /*formulario*/
 #button {
@@ -25,7 +64,7 @@ legend {
 .contenedor {
   padding-top: 10%;
   padding-bottom: 5%;
-  background-color: #e2e8f0;
+  background-color: #f5f5f5;
 }
 .form-group {
   display: flex;
@@ -35,7 +74,12 @@ legend {
 input[type="text"],
 textarea {
   width: 100%;
-  border: 0px solid transparent;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+input[type="email"] {
+  width: 100%;
+  border: 1px solid black;
   border-radius: 10px;
 }
 
@@ -48,6 +92,7 @@ input[type="email"]::placeholder {
   font-weight: 500;
   color: blue;
   padding: 5px;
+  color: black;
 }
 
 /*modal*/
@@ -58,73 +103,96 @@ input[type="email"]::placeholder {
   align-items: center;
 }
 
-/* footer*/
-footer {
-  width: 100%;
-  padding: 30px;
-}
-.contacto {
-  padding: 10px;
-  margin-right: 7%;
-}
-.lista {
-  margin-left: 25%;
-}
-.lista li a {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--colorBlanco);
-  font-size: medium;
-}
-.lista2 li a {
-  text-decoration: none;
-  color: var(--colorBlanco);
-  font-size: medium;
-}
-ul li {
-  margin-left: 20px;
-}
-li a:hover {
-  font-weight: bold;
-}
-.contacto-suscripcion {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  /* footer*/
+  #footer2{
+    background-color: #323232;
+    height:500px;
+    width: 100%;
+  }
+  .contenedor-footer-logo,.contenedor-footer-nav nav ul,.contenedor-footer-redes nav ul{
+    display: flex;
+    justify-content:center;
+    align-items:center; 
+  }
+  .contenedor-footer-nav nav ul li a{
+    text-decoration: none;
+    padding:30px;
+    color:white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .contenedor-footer-redes nav ul li a{
+    text-decoration: none;
+    padding:30px;
+    color:white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .p{
+    font-size:1rem;
+    text-align: center;
+    padding-top:5%;
+  }
+  .contenedor-footer-nav nav ul li{
+    border-right: 1px solid white;
+    list-style: none;
+  }
+  .contenedor-footer-redes nav ul li{
+    list-style: none;
+  }
+  .contenedor-footer-nav nav ul li a:hover{
+  color:green;
+  }
+  .contenedor-footer-nav nav ul li:last-child{
+    border-right: none;
+  }
+  #img-footer{
+    width: auto;
+    height: 60px;
+    margin: 60px;
+  }
 
-footer .divUno {
+#c-banner {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-#suscripcion {
+.jum {
+  position: absolute;
+  top: 110px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-#su {
-  background-color: rgba(255, 255, 255, 0.581);
-  width: 40%;
+#imagen-banner {
+  margin-top: -1%;
+  width: 100%;
+  height: 600px;
+  filter: brightness(0.5);
+}
+.lista-banner{
+  text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: baseline;
 }
 @media screen and (max-width: 600px) {
-  html {
-    width: 110vw !important;
-  }
+
   /*formulario*/
   .contenedor {
     padding-top: 31% !important;
     padding-bottom: 5%;
-    background-color: #e2e8f0;
   }
 
   textarea,
   input[type="text"],
   input[type="email"] {
-    width: 70vw;
-    height: 8vh;
+    width: 80vw;
+    height: 7vh;
     margin-left: 5px;
   }
   #button {
@@ -132,43 +200,128 @@ footer .divUno {
     width: auto;
     height: auto;
   }
-  /* footer*/
-  #suscripcion {
-    display: block;
+   /* footer*/
+   #footer2{
+    background-color: #323232;
+    height:100%;
+  }
+  .contenedor-footer-logo,.contenedor-footer-nav nav ul,.contenedor-footer-redes nav ul{
+    display: flex;
+    justify-content:center;
+    align-items:center; 
+    align-items: center;
+    flex-direction: column;
+  }
+  .contenedor-footer-nav nav ul li a{
+    text-decoration: none;
+    padding:30px;
+    color:white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .contenedor-footer-redes nav ul li a{
+    text-decoration: none;
+    padding:30px;
+    color:white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .p{
+    font-size:1rem;
     text-align: center;
-    padding: 10px;
+    padding-top:5%;
   }
-  #su {
-    margin-top: 5px;
-    width: 100%;
+  .contenedor-footer-nav nav ul li{
+    border:0px;
+    list-style: none;
   }
-  footer .divUno {
-    padding: 20px !important;
+  .contenedor-footer-redes nav ul li{
+    list-style: none;
   }
-  .divUno {
-    margin: 0px !important;
-    padding: 0px !important;
+  .contenedor-footer-nav nav ul li a:hover{
+  color:green;
   }
-  .br {
-    border-bottom: 1px solid white;
-    padding: 5px;
+  .contenedor-footer-nav nav ul li:last-child{
+    border-right: none;
   }
-  svg {
-    font-size: small;
+  #img-footer{
+    width: auto;
+    height: 60px;
+    margin: 60px;
   }
-  .a {
-    font-size: 12px !important;
+
+  /*banner*/
+  #c-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
   }
-  .contacto {
-    padding-left: 2px;
+  .jum {
+    position: absolute;
+    top: 110px;
+  }
+  #imagen-banner {
+    width: 100wh;
+    height: 40vh;
+    filter: brightness(0.5);
   }
 }
 
 @media screen and (max-width: 900px) {
+  /*contacto*/
+  .datos-contacto {
+    height: auto;
+    width: 100%;
+    margin-top: 5%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .parrafo {
+    width: 60%;
+  }
+  .p {
+    padding-top: 10%;
+    font-weight: bold;
+  }
+  #contacto {
+    background-color: lightyellow;
+  }
+  .ic {
+    font-size: 7rem;
+    color: rgb(42, 39, 39);
+  }
+  .contenedor-contacto {
+    margin: 5% 0px 0px 1%;
+  }
+  /*banner¨*/
+  #c-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .jum {
+    position: absolute;
+    top: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  #imagen-banner {
+    width: 100%;
+    height: 60vh;
+    filter: brightness(0.5);
+  }
   .contenedor {
     padding-top: 15%;
     padding-bottom: 5%;
-    background-color: #e2e8f0;
   }
 
   #button {
@@ -176,37 +329,12 @@ footer .divUno {
     width: auto;
     height: auto;
   }
-  /* footer*/
-  #suscripcion {
-    display: block;
-    text-align: center;
-    padding: 10px;
-  }
-  #su {
-    margin-top: 5px;
-    width: 100%;
-  }
-  footer .divUno {
-    padding: 20px !important;
-  }
-  .divUno {
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-  .br {
-    padding: 5px;
-  }
-  svg {
-    font-size: small;
-  }
-  .a {
-    font-size: 12px !important;
-  }
-  .contacto {
-    padding-left: 2px;
-  }
-  .contenedor-redes-sociales {
-    display: flex;
-    justify-content: center;
+  /*formulario*/
+  textarea,
+  input[type="text"],
+  input[type="email"] {
+    width: 70vw;
+    height: 7vh;
+    margin-left: 5%;
   }
 }

@@ -23,14 +23,16 @@ export class carritoService{
       }
 
 
-      public saveOrder(id: number,pago:string): Observable<Orden> {
-        return this.httpClient.get<Orden>(this.menuURL + `/save/${id}/${pago}`);
+      public saveOrder(id: number,pago:string,envio:boolean,costoEnvio:number,telefono:number,domicilio:String): Observable<Orden> {
+        return this.httpClient.get<Orden>(this.menuURL + `/save/${id}/${pago}/${envio}/${costoEnvio}/${telefono}/${domicilio}`);
         }
 
 
-        public delete(id:number): Observable<any> {
-          return this.httpClient.delete<any>(this.menuURL + `/delete/${id}`);
+        public delete(id:number,Id:number): Observable<any> {
+          return this.httpClient.delete<any>(this.menuURL + `/delete/${id}/${Id}`);
         }
-
-    
+     
+        public order(id: number,orden:Orden): Observable<Orden> {
+          return this.httpClient.put<Orden>(this.menuURL + `/orden/${id}`,orden);
+          }    
     }

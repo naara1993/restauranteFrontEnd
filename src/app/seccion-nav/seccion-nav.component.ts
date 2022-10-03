@@ -20,6 +20,7 @@ export class SeccionNavComponent implements OnInit {
   orden:OrdenDetalle[];
   usuario: NuevoUsuario;
   ord: Orden[] = [];
+  or: Orden[] = [];
   o: Orden[] = [];
   to:number;
   isAdmin=false;
@@ -58,28 +59,36 @@ export class SeccionNavComponent implements OnInit {
         this.ord = data;
         if(this.ord.length>=0){
           console.log(this.ord.length);
-          
+          let not =document.getElementById('not');
           let estado=document.getElementById('estado');
           estado.style.visibility="visible";
+          not.style.visibility="visible";
         }
         else{
           let estado=document.getElementById('estado');
+          let not =document.getElementById('not');
           estado.style.visibility="hidden";
+          not.style.visibility="hidden";
         }
       });
     });
     if(this.isAdmin){
       this.listaOrdenesUsuarios.listOrdenes().subscribe(lista => {
-        if(this.o.length>=0){
+        if(lista.length>0){
+          let not =document.getElementById('not');
           let estado=document.getElementById('estado');
           estado.style.visibility="visible";
+          not.style.visibility="visible";
         }
         else{
           let estado=document.getElementById('estado');
+          let not =document.getElementById('not');
           estado.style.visibility="hidden";
+          not.style.visibility="hidden";
         }
       })
     }
+
   }
 
 

@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { EstadoOrdenComponent } from './estado-orden/estado-orden.component';
 import { LocalesComponent } from './locales/locales.component';
+import { DetalleComponent } from './detalle/detalle.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   },
   { path: 'contacto', component: ContactoComponent },
   { path: 'locales', component: LocalesComponent },
+  {path:'detalle/:id',component:DetalleComponent}
 ];
 
 @NgModule({

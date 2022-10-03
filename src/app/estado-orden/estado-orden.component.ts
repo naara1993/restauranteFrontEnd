@@ -28,13 +28,23 @@ export class EstadoOrdenComponent implements OnInit {
   ord: Orden[] = [];
   roles: string[];
   isAdmin = false;
+  ter:any;
+  id:any;
 
+
+
+
+ 
+  
   ngOnInit(): void {
+
+
     let User = JSON.parse(localStorage.getItem('User')!);
     this.usuarioServicio.detailName(String(User)).subscribe((data) => {
       this.usuario = data;
       this.listaOrdenesUsuarios.detail(this.usuario.id).subscribe((data) => {
         this.orden = data;
+        console.log(this.orden);
         for (let i = 0; i < this.orden.length; i++) {
           if (this.orden[i].usuario.id == this.usuario.id) {
             this.o.push(this.orden[i]);
@@ -51,34 +61,52 @@ export class EstadoOrdenComponent implements OnInit {
       if (rol === 'ROLE_ADMIN') {
         this.isAdmin = true;
       }
-    });
+    });   
   }
-  menu: any[] = [];
-  total: any;
-  mostrar(id: number) {
-    let modal = document.getElementById('modal');
-    this.ordenServicio.lista().subscribe((data) => {
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].orden.id == id) {
-          this.menu = data.filter((i) => i.orden.id == id);
-          this.total = data[i].orden.total;
-        }
-      }
-    });
-    modal.classList.add('es-visible');
-  }
-
-  cerrar() {
-    let modal = document.getElementById('modal');
-    if (modal.matches('.es-visible')) {
-      modal.classList.remove('es-visible');
-    }
+   menu: any[] = [];
+   total: any;
+   mostrar(id: number) {
+  //   let modal = document.getElementById('modal');
+  //   this.ordenServicio.lista().subscribe((data) => {
+  //     for (let i = 0; i < data.length; i++) {
+  //       if (data[i].orden.id == id) {
+  //         this.menu = data.filter((i) => i.orden.id == id);
+  //         this.total = data[i].orden.total;
+  //       }
+  //     }
+  //   });
+  //   modal.classList.add('es-visible');
   }
 
-  cancelar(id:number){
-    this.ordServicio.delete(id).subscribe(data =>{
+  // cerrar() {
+  //   let modal = document.getElementById('modal');
+  //   if (modal.matches('.es-visible')) {
+  //     modal.classList.remove('es-visible');
+  //   }
+  // }
+
+  cancelar(Ordenid:number,UsuarioId:number){
+    console.log(UsuarioId);
+    this.ordServicio.delete(Ordenid,UsuarioId).subscribe(data =>{
      alert("orden eliminada");
      window.location.reload();
     });
+}
+or:Orden;
+terminado(idOrden:number){
+  this.listaOrdenesUsuarios.listOrdenes().subscribe((lista) => {
+    this.orden = lista;
+    for(let i = 0; i < lista.length; i++){
+      if(lista[i].id == idOrden){
+        lista[i].estado="Aceptado"
+        console.log(lista);
+        this.or=lista[i];
+          
+      }
+    }
+    this.ordServicio.order(idOrden,this.or).subscribe((orden) =>{
+    })
+  });
+
 }
 }

@@ -75,6 +75,33 @@ export class CarritoComponent implements OnInit {
   isLogged = false;
   roles: string[];
   isAdmin = false;
+  env: boolean;
+  costEnvio: number;
+  telefono: number;
+  domicilio: String;
+
+  envio() {
+    const exampleCheck1 = <HTMLInputElement>document.getElementById('check');
+    let exampleInputNumber = <HTMLInputElement>(
+      document.getElementById('telefono')
+    );
+    let exampleInputEmail1 = <HTMLInputElement>(
+      document.getElementById('direccion')
+    );
+    if (exampleCheck1.checked) {
+      exampleInputEmail1.disabled = true;
+      exampleInputNumber.disabled = true;
+      this.env = true;
+      this.costEnvio = 0;
+      this.totalF= this.totalF-400;
+    } else {
+      exampleInputEmail1.disabled = false;
+      exampleInputNumber.disabled = false;
+      this.env = false;
+      this.costEnvio = 400;
+      this.totalF= this.totalF+this.costEnvio;
+    }
+  }
   ngOnInit(): void {
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach((rol) => {
@@ -120,6 +147,7 @@ export class CarritoComponent implements OnInit {
           this.card.mount('#card-element');
         }
       });
+    this.envio();
   }
   verificar(): void {
     const efectivo = <HTMLInputElement>document.getElementById('efectivo');
@@ -169,71 +197,104 @@ export class CarritoComponent implements OnInit {
 
   //modal
   mostrarModal() {
-    let modal = document.getElementById('modal');
-    modal?.classList.add('es-visible');
+    let telefono = <HTMLInputElement>(
+      document.getElementById('telefono')
+    );
+    let direccion = <HTMLInputElement>(
+      document.getElementById('direccion')
+    );
+    const exampleCheck1 = <HTMLInputElement>document.getElementById('check');
+    if(exampleCheck1.checked) {
+      let modal = document.getElementById('modal');
+      modal?.classList.add('es-visible');
+    }else if((telefono.value.length>0 && telefono.value!==null) && (direccion.value.length>0 && direccion.value!==null)){
+      let modal = document.getElementById('modal');
+      modal?.classList.add('es-visible');
+    }else{
+      alert("para terminar de comprar debe completar los datos del envío o seleccionar que retira en el local");
+    }
   }
   cerrarModal() {
     let modal = document.getElementById('modal');
     if (modal?.matches('.es-visible')) {
       modal?.classList.remove('es-visible');
     }
-    window.location.reload();
   }
 
-  //suscripcion
+  validarEnvio(){
 
-  suscripcion() {
-    const sus = document.getElementById('su');
-    alert('gracias por tu suscripción');
-    sus!.innerHTML = '';
   }
 
-  enMantenimiento() {
-    alert(
-      'por el momento esta funcionalidad no esta disponible, estamos trabajando para ponerla en marcha'
-    );
-  }
   pagar() {
+    let telefono = <HTMLInputElement>document.getElementById('telefono');
+    let domicilio = <HTMLInputElement>document.getElementById('direccion');
+    if (this.env) {
+      Number(telefono.value);
+      domicilio.value = 'null';
+    }
     if (this.orden.length <= 0) {
       console.log(this.orden.length);
       alert(
         'la lista esta vacia, para terminar la compra debe seleccionar un producto'
       );
-    } else {
+      this.cerrarModal();
+    }
+    
+    else {
       console.log(this.orden.length);
       const efectivo = <HTMLInputElement>document.getElementById('efectivo');
       if (efectivo.checked) {
         this.carritoServicio
-          .saveOrder(this.usuario.id!, efectivo.value)
+          .saveOrder(
+            this.usuario.id!,
+            efectivo.value,
+            this.env,
+            this.costEnvio,
+            Number(telefono.value),
+            domicilio.value
+          )
           .subscribe((lista) => {});
-        alert('orden creada,muchas gracias');
+          
+      //  let card=<HTMLInputElement>document.getElementById('card');
+        //setTimeout(card.style.visibility='visible',2000);
+        alert('orden generada')
         this.router.navigateByUrl('/estado');
-        //  this.cerrarModal();
       }
     }
   }
+
   buy() {
-    const name = this.stripeForm.get('name').value;
-    this.stripeService.createToken(this.card, { name }).subscribe((result) => {
-      if (result.token) {
-        const paymentIntentDto: PaymentIntentDto = {
-          token: result.token.id,
-          amount: this.totalF,
-          currency: 'eur',
-          description: this.descripcion,
-        };
-        this.paymentService.pagar(paymentIntentDto).subscribe((data) => {
-          let n = <HTMLInputElement>document.getElementById('nombre');
-          this.id = data['id'];
-          this.nombre = n.value;
-          this.descripcion = data[`description`];
-          this.precio = data['amount'];
+    if (this.orden.length <= 0) {
+      console.log(this.orden.length);
+      alert(
+        'la lista esta vacia, para terminar la compra debe seleccionar un producto'
+        );
+        this.cerrarModal();
+    } else {
+      const name = this.stripeForm.get('name').value;
+      this.stripeService
+        .createToken(this.card, { name })
+        .subscribe((result) => {
+          if (result.token) {
+            const paymentIntentDto: PaymentIntentDto = {
+              token: result.token.id,
+              amount: this.totalF,
+              currency: 'eur',
+              description: this.descripcion,
+            };
+            this.paymentService.pagar(paymentIntentDto).subscribe((data) => {
+              let n = <HTMLInputElement>document.getElementById('nombre');
+              this.id = data['id'];
+              this.nombre = n.value;
+              this.descripcion = data[`description`];
+              this.precio = data['amount'];
+            });
+            this.error = undefined;
+          } else if (result.error) {
+            this.error = result.error.message;
+          }
         });
-        this.error = undefined;
-      } else if (result.error) {
-        this.error = result.error.message;
-      }
-    });
+    }
   }
   ModalPago() {}
   cerrarT() {
@@ -245,22 +306,39 @@ export class CarritoComponent implements OnInit {
 
   Confirmar() {
     let modal = document.getElementById('modal');
-    if (modal?.matches('.es-visible')) {
-      modal?.classList.remove('es-visible');
+    if (this.orden.length <= 0) {
+      console.log(this.orden.length);
+      if (modal?.matches('.es-visible')) {
+        modal?.classList.remove('es-visible');
+      }
+    } else {
+      let m = document.getElementById('pago');
+      m.classList.add('v');
     }
-    let m = document.getElementById('pago');
-    m.classList.add('v');
   }
 
   confirmar(id: string): void {
+    let telefono = <HTMLInputElement>document.getElementById('telefono');
+    let domicilio = <HTMLInputElement>document.getElementById('direccion');
+    if (this.env) {
+      Number(telefono.value);
+      domicilio.value = 'null';
+    }
     this.paymentService.confirmar(id).subscribe(
       (data) => {
         console.log(this.usuario.id);
 
         this.carritoServicio
-          .saveOrder(this.usuario.id, 'tarjeta')
+          .saveOrder(
+            this.usuario.id,
+            'tarjeta',
+            this.env,
+            this.costEnvio,
+            Number(telefono.value),
+            domicilio.value
+          )
           .subscribe((lista) => {});
-        alert('pago confirmado');
+        alert('Orden generada');
         this.router.navigateByUrl('/estado');
         //  window.location.reload();
       },

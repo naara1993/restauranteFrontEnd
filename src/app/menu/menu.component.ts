@@ -328,12 +328,7 @@ mostrarArticulo(id:number){
 x(){
   this.men=null;
 }
-//suscripcion 
-suscripcion(){
-  const sus=document.getElementById('su');
-   alert("gracias por tu suscripción");
-   sus!.innerHTML = "";
-}
+
 mostrarTotal():void{
 let c=0;
 let total=0;

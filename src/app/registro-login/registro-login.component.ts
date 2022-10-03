@@ -67,11 +67,4 @@ export class RegistroLoginComponent implements OnInit {
     }
     this.ListUser();
   }
-
-  //suscripcion
-  suscripcion() {
-    const sus = document.getElementById('su');
-    alert('gracias por tu suscripción');
-    sus!.innerHTML = '';
-  }
 }

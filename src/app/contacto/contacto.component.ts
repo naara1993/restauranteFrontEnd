@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NuevoUsuario } from '../models/nuevo-usuario';
+import { AuthService } from '../service/auth-service';
 
 @Component({
   selector: 'app-contacto',
@@ -9,9 +11,24 @@ export class ContactoComponent implements OnInit {
   nombre: String = '';
   email: String = '';
   message: String = '';
-  constructor() {}
+  usuario: NuevoUsuario;
+  constructor(private usuarioServicio: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // window.addEventListener('scroll', function () {
+    //   let header= document.getElementById('head');
+    //   let scroll = document.documentElement.scrollTop;
+    //   header.classList.toggle('transparent',scroll>10);
+    // });
+    let txtNombre=<HTMLInputElement>document.getElementById('txtNombre');
+    let txtEmail=<HTMLInputElement>document.getElementById('txtEmail');
+    let User = JSON.parse(localStorage.getItem('User')!);
+    this.usuarioServicio.detailName(String(User)).subscribe((data) => {
+      this.usuario = data;
+      txtNombre.value=this.usuario.nombre;
+      txtEmail.value=this.usuario.email;
+    });
+  }
 
   //enviar mensaje
   onContacto(): void {
@@ -47,11 +64,4 @@ export class ContactoComponent implements OnInit {
     this.message = '';
   }
 
-  //suscripcion
-
-  suscripcion() {
-    const sus = document.getElementById('su');
-    alert('gracias por tu suscripción');
-    sus!.innerHTML = '';
-  }
 }

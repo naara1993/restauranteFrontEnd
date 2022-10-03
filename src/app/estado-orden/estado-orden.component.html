@@ -10,160 +10,150 @@
     <app-seccion-nav></app-seccion-nav>
 
     <!--- estado ---->
-    <div *ngIf="!isAdmin" class="card text-center" id="c">
-      <div class="card-body">
-        <h5 class="card-title">Tus ordenes</h5>
-        <p class="card-text">Puedes ver el estado de tus Ordenes aquí</p>
-      </div>
+    <div *ngIf="!isAdmin" class="text-center pt-3" id="c">
+      <figure>
+        <blockquote class="blockquote">
+          <p class="pe">Aca podes ver el estado de tu pedido</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <cite title="Título fuente"></cite>
+        </figcaption>
+      </figure>
     </div>
-    <section *ngIf="!isAdmin" id="section">
-      <div class="card" id="card" *ngFor="let orden of o">
-        <div class="card-body">
-          <h5 class="card-title">
-            Numero de la orden
-            <u class="text-center">
-              {{ orden.numero }}
-            </u>
-          </h5>
-          <p class="card-text">
-            Fecha Creación
-            <span> {{ orden.fechaCreacion }}</span>
-          </p>
-          <p class="card-text">
-            Tipo de pago a
-            <span> {{ orden.tipoPago }}</span>
-          </p>
-          <p class="card-text">
-            Monto total
-            <span> {{ orden.total }} $</span>
-          </p>
-          <p class="card-text">
-            Estado
-            <span class="text-danger"> Pendiente</span>
-          </p>
 
-          <a (click)="mostrar(orden.id)" class="btn btn-danger">
-            Ver mas detalle
-          </a>
-        </div>
-      </div>
-    </section>
 
-    <section class="sec" *ngIf="isAdmin">
-      <div class="h2 text-center">
-        <h2 class="h2 b">Lista de ordenes de los usuarios</h2>
-      </div>
-      <div class="section-card mt-5">
-        <div
-          class="card col-md-3 col-lg-2 col-sm-12"
-          id="card"
-          *ngFor="let orden of orden"
-        >
-          <div class="card-body">
-            <h5 class="card-title">
-              Numero de la orden
-              <u class="text-center">
-                {{ orden.numero }}
-              </u>
-            </h5>
-            <p class="card-text">
-              Fecha Creación
-              <span> {{ orden.fechaCreacion }}</span>
-            </p>
-            <p class="card-text">
-              Usuario
-              <span> {{ orden.usuario.nombre }}</span>
-            </p>
-            <p class="card-text">
-              Tipo de pago a
-              <span> {{ orden.tipoPago }}</span>
-            </p>
-            <p class="card-text">
-              Monto total
-              <span> {{ orden.total }} $</span>
-            </p>
-            <p class="card-text">
-              Estado
-              <span class="text-danger"> Pendiente</span>
-            </p>
-            <div class="d-flex">
-              <a (click)="mostrar(orden.id)" class="btn btn-danger">
-                Ver mas detalle
-              </a>
-              <button (click)="cancelar(orden.id)" class="btn btn-danger ms-2">
-                Cancelar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section>
-      <div class="card" *ngFor="let orden of menu">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">{{ orden.menu.title }}</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </section> -->
-
-    <div class="container modal" id="modal">
-      <div class="window">
-        <div class="order-info">
-          <div class="order-info-content">
-            <div class="d">
-              <h2>Detalle de la orden</h2>
-              <button (click)="cerrar()" class="btn btn-dark boton ms-5">
-                X
-              </button>
-            </div>
-            <div class="line"></div>
-            <table class="order-table">
-              <tbody *ngFor="let orden of menu">
-                <tr>
-                  <td>
-                    <img
-                      src="{{ orden.menu.image }}"
-                      class="img-fluid"
-                      alt=""
-                    />
-                  </td>
-                  <td>
-                    <br />
-                    <span class="thin">{{ orden.menu.title }}</span>
-                    <br /><br />
-                    <span class="thin small">
-                      cantidad: {{ orden.cantidad }}</span
+    <div class="slider-container">  
+      <div class="c" *ngFor="let orden of o">
+        <div class="card">
+          <div class="title">Estado del pedido</div>
+        <div class="info">
+            <div class="row">
+                <div class="col-7">
+                    <span id="heading">Fecha</span><br>
+                    <span id="details">{{orden.fechaCreacion}}</span>
+                </div>
+                <div class="col-5 pull-right">
+                    <span id="heading">Order No.</span><br>
+                    <span id="details">{{orden.numero}}</span>
+                </div>
+            </div>      
+        </div>      
+        <div class="pricing">
+            <div class="row">
+                <div class="col-9">
+                    <span id="name">Pedido</span>  
+                </div>
+                <div class="col-3">
+                    <span id="price">
+                      <a
+                      (click)="mostrar(orden.id)"
+                      class="btn btn-danger"
+                      [routerLink]="['/detalle', orden.id]"
                     >
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                </tr>
-              </tbody>
-              <div class="line"></div>
-              <div class="total">
-                <span class="w-50" style="float: left">
-                  <div class="thin dense">Delivery</div>
-                  <div class="thin dense">Costo</div>
-                  TOTAL
-                </span>
-                <span class="w-50" style="float: right; text-align: right">
-                  <div class="thin dense">$0</div>
-                  <div class="thin dense">$0</div>
-                  $ {{ total }}
-                </span>
-              </div>
-            </table>
-          </div>
+                      Detalles
+                    </a></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <span id="name">Envio</span>
+                </div>
+                <div class="col-3">
+                    <span id="price">{{orden.costoEnvio}}$</span>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="total">
+            <div class="row">
+                <div class="col-9">total</div>
+                <div class="col-3">{{orden.total}}$</div>
+            </div>
+        </div>
+        <div class="tracking">
+            <div class="title">Estado del pedido</div>
+        </div>
+        <div class="progress-track">
+            <ul id="progressbar">
+                <li class="step0 active " id="step1">Orden</li>
+                <li class="step0   text-center" id="step2">Aceptado</li>
+                <li class="step0  text-right" id="step3">Preparando</li>
+                <li class="step0 text-right" id="step4">Delivery</li>
+            </ul>
+        </div>
+        </div>
     </div>
+    </div> 
+
+  <section *ngIf="isAdmin" id="section2">
+    <table class="t table table-dark table-striped mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Num-Orden</th>
+          <th scope="col">Fecha Creación</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Correo del usuario</th>
+          <th scope="col">Tipo de Pago</th>
+          <th scope="col">Total</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Detalle de la orden</th>
+          <th scope="col">Cancelar</th>
+          <th scope="col">Aceptar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orden of orden">
+          <th scope="row">{{ orden.numero }}</th>
+          <td>{{ orden.fechaCreacion }}</td>
+          <td>{{ orden.usuario.nombre }}</td>
+          <td>{{ orden.usuario.email }}</td>
+          <td>{{ orden.tipoPago }}</td>
+          <td>{{ orden.total }} $</td>
+          <td class="text-danger">{{ orden.estado }}</td>
+          <td>
+            <a
+            (click)="mostrar(orden.id)"
+            class="btn btn-danger"
+            [routerLink]="['/detalle', orden.id]"
+          >
+            Detalle
+          </a>
+          </td>
+          <td>
+            <button
+              (click)="cancelar(orden.id, orden.usuario.id)"
+              class="btn btn-danger ms-2"
+            >
+              Cancelar
+            </button>
+          </td>
+          <td>
+            <button (click)="terminado(orden.id)" class="btn btn-danger ms-2">
+              Aceptar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div *ngIf="!isAdmin" class="pt-5 pb-5">
+    <svg width="100%">
+      <defs>
+        <pattern
+          id="polka-dots"
+          x="0"
+          y="0"
+          width="100"
+          height="100"
+          patternUnits="userSpaceOnUse"
+        >
+          <circle fill="#be9ddf" cx="25" cy="25" r="3"></circle>
+        </pattern>
+      </defs>
+      <text x="50%" y="60%" text-anchor="middle">Gracias por tu orden</text>
+    </svg>
+  </div>
+
+
   </body>
 </html>

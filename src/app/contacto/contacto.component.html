@@ -7,8 +7,61 @@
   </head>
   <body>
     <app-seccion-nav></app-seccion-nav>
+<!--banner-->
 
-    <div class="container.fluid">
+    <div id="c-banner" class="text-white ">
+      <img
+        id="imagen-banner"
+        src="assets/contacto.jpg"
+        class="img-fluid"
+        alt=""
+      />
+      <div class="jumbotron jum mt-5">
+        <h1 class="titulo display-4">Contacto</h1>
+        <div class="mt-3 text-white lista-banner">
+          <li class="list-unstyled d-flex justify-content-center">
+            <a class="nav-link" aria-current="page" routerLink="/index">Home</a>
+          </li>
+          <li class="ps-3 text-muted">Contacto</li>
+        </div>
+      </div>
+    </div>
+<!--contacto icono-->
+    <div id="contacto" class="container-fluid text-black">
+      <div class="row contenedor-contacto">
+
+        <div class="datos-contacto col-md-4 col-lg-4 col-sm-12">
+          <div class="parrafo">
+          <i class="fa-solid fa-phone ic"></i>
+            <p class="p">1144556677</p>
+            <p class=" text-muted">Puedes llamarnos en cualquier momento</p>
+          </div>
+        </div>
+
+        <div class="datos-contacto col-md-4 col-lg-4 col-sm-12">
+          <div class="parrafo">
+            <i class="fa-solid fa-map ic"></i>
+            <p class="p">
+              51 Francis Street, San Diego, CA 91702 United States
+            </p>
+            <p class="text-muted">
+            Nos encontramos aquí
+            </p>
+          </div>
+        </div>
+        <div class="datos-contacto col-md-4 col-lg-4 col-sm-12">
+          <div class="parrafo">
+          <i class="fa-solid fa-envelope ic"></i>
+            <p class="p">info@demolink.org</p>
+            <p class="text-muted">
+              No dude en enviarnos un correo electrónico con sus preguntas
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--formulario-->
+    <div class="container-fluid">
       <div class="row">
         <div class="contenedor col-sm-12">
           <div class="">
@@ -22,7 +75,9 @@
               #f="ngForm"
             >
               <fieldset>
-                <legend class="text-center header">Contacto</legend>
+                <legend class="text-center header pb-3">
+                  Completa el formulario para ponerte en contacto
+                </legend>
                 <div class="form-group">
                   <span class="col-md-1 col-md-offset-2 text-center"
                     ><i class="fa fa-user bigicon"></i
@@ -148,145 +203,63 @@
       </div>
     </section>
 
-    <!----------------- footer  --------------->
-
-    <footer class="bg-dark container-fluid">
-      <!--row-->
-      <div class="row divUno">
-        <div class="col-md-4 col-lg-4 col-sm-12 br">
-          <ul class="list-unstyled lista text-white">
-            <li>
-              <a href="./index.html" routerLink="">home</a>
-            </li>
-            <li>
-              <a href="./menu.html" routerLink="/menu">menu</a>
-            </li>
-            <li>
-              <a href="./contacto.html" routerLink="/contacto">contacto</a>
-            </li>
-            <li>
-              <a href="./locales.html">locales</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-md-4 col-lg-4 col-sm-12 br">
-          <ul class="list-unstyled lista mt-3 text-white">
-            <li>
-              <a href="./index.html">blog</a>
-            </li>
-            <li>
-              <a href="./menu.html">cupones</a>
-            </li>
-            <li>
-              <a href="./contacto.html">Reseña</a>
-            </li>
-            <li>
-              <a href="./locales.html">Opiniones</a>
-            </li>
-          </ul>
-        </div>
-        <br class="br" />
-        <div class="col-md-4 col-lg-4 col-sm-12 br">
-          <ul class="mt-3 text-white list-unstyled lista contacto">
-            <li>
-              <a class="a" href="#!">
-                <i class="fa-solid fa-mobile-screen"></i>
-                4444-2222
-              </a>
-            </li>
-            <li>
-              <a class="a" href="#!">
-                <i class="fa-solid fa-envelope"></i>
-                rrrrr@gmail.com
-              </a>
-            </li>
-            <li>
-              <a class="a" href="#!">
-                <i class="fa-solid fa-map-location"></i>
-                local juan 3333
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!--/row-->
-      </div>
-
-      <div class="container-fluid">
-        <!--row-->
-        <div class="row contacto-suscripcion mt-3">
-          <!--col-->
-          <div class="col-md-5 col-lg-4 col-sm-12">
-            <div class="contenedor-redes-sociales d-flex mt-3">
-              <h5 class="text-uppercase text-white mb-3 ps-5">
-                <i><b> Seguinos</b></i>
-              </h5>
-              <ul class="list-unstyled d-inline-flex ms-3">
-                <li class="pe-4">
-                  <a href="#!" class="text-white">
-                    <i class="fa-brands fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="pe-4">
-                  <a href="#!" class="text-white">
-                    <i class="fa-brands fa-instagram"></i>
-                  </a>
-                </li>
-                <li class="pe-4">
-                  <a href="#!" class="text-white">
-                    <i class="fa-brands fa-twitter"></i>
-                  </a>
-                </li>
-              </ul>
+    <!--footer 2-->
+    <footer id="footer2">
+      <section class="container-fluid">
+        <div class="">
+            <div class="row contenedor-footer-logo">
+              <img id="img-footer" src="assets/l.png" alt="" />
             </div>
-          </div>
-          <!--/col-->
-
-          <!--col-->
-          <div class="col-md-7 col-lg-6 col-sm-12">
-            <form
-              (ngSubmit)="suscripcion()"
-              novalidate
-              #f="ngForm"
-              action=""
-              id="suscripcion"
-            >
-              <label for="suscribete" class="text-white pe-1 label-suscribite"
-                ><u>
-                  <b><i>Suscribite y recibe nuevas novedades</i></b>
-                </u>
-              </label>
-              <input
-                id="su"
-                placeholder="email"
-                autocomplete="on"
-                type="email"
-                class="form-control"
-                name="correo"
-                placeholder="Correo"
-                required
-                #correo="ngModel"
-                [ngModel]=""
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                [ngClass]="{
-                  'is-invalid animated shake': correo.invalid && correo.touched
-                }"
-              />
-              <button
-                [disabled]="!f.valid"
-                id="sus"
-                title="ingresa tu email para suscribirte"
-                class="btn btn-dark"
-              >
-                suscribirse
-              </button>
-            </form>
-            <!--col-->
-          </div>
-          <!--/row-->
+            <div class="contenedor-footer-nav">
+              <nav class="row">
+                <ul>
+                  <li>
+                    <a href="">Home</a>
+                  </li>
+                  <li>
+                    <a href="">Menu</a>
+                  </li>
+                  <li>
+                    <a href="">Contacto</a>
+                  </li>
+                  <li>
+                    <a href="">Local</a>
+                  </li>
+                  <li>
+                    <a href="">Blog</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="contenedor-footer-redes mt-5">
+              <nav class="row">
+                <ul>
+                  <li>
+                    <a href="">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i class="fa-brands fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i class="fa-brands fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i class="fa-brands fa-youtube"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
         </div>
-      </div>
+      </section>
+      <p class="p text-muted ">©  2022 Rest. All Rights Reserved. Privacy Policy</p>
     </footer>
   </body>
 </html>

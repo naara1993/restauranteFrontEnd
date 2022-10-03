@@ -4,8 +4,23 @@
     padding: 0;
     margin: 0;
 }
+header{
+  background-color: #323232 !important;
+}
 header nav{
-  padding: 10px;
+  padding: 15px;
+  background-color: #323232 !important;
+}
+.not{
+  position:relative;
+  left: -22px;
+  top: -27px;
+  width: -10px;
+  font-size: 0px;
+  visibility: hidden;
+}
+.mos{
+  visibility: visible;
 }
 #icono{
     color: white;
@@ -21,17 +36,22 @@ header nav{
   }
 #img{
   margin-left:35px;
+  
 }
   #navbarSupportContent{
-    margin:10px;
-    font-size: large;
-    margin-left: 20%;;
+    margin: 10px;
+    margin-left: 20%;
+    text-transform: uppercase;
+  }
+  .nav-link:hover {
+   color:green;
   }
   #user{
   align-items:center;
   width: 25%;
   margin-left: 21%;
   width: 25%;
+  font-size: smaller;
 
   }
   #notificacion{
@@ -40,7 +60,6 @@ header nav{
     align-items: center;
   }
   .navbar-toggler-icon{
-    background-color: black;
     margin-right: 5px;
   }
   .mostrarNotificacion{
@@ -79,3 +98,9 @@ header nav{
   #estado{
     visibility:hidden;
   }
+  .nav li a:hover{
+    font-weight: bold;
+  }
+  .navbar-nav .nav-link {
+    color: white;
+}

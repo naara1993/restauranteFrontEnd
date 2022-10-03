@@ -65,11 +65,4 @@ export class LoginRegistroComponent implements OnInit {
     );
   }
 
-  //suscripcion
-
-  suscripcion() {
-    const sus = document.getElementById('su');
-    alert('gracias por tu suscripción');
-    sus!.innerHTML = '';
-  }
 }

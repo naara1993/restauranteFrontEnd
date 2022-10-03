@@ -4,6 +4,33 @@
   box-sizing: border-box;
 }
 
+.modal-orden{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  background-color: darkgray;
+  width: 20%;
+  border-radius: 20px;
+  position: absolute;
+  top: 200px;
+  text-align: center;
+  right: 700px;
+  visibility:hidden;
+    
+}
+.fa-check{
+  font-size: 2em;
+  padding: 10px;
+  background: darkslategrey;
+  color: aliceblue;
+  border-radius: 30px;
+}
+.modal-orden p{
+  font-size: larger;
+    font-family: sans-serif;
+}
 .contenedor-carrito {
   padding-top: 15.3%;
   height: 100%;
@@ -67,19 +94,19 @@
   margin-bottom: 25px;
 }
 
+.form-check{
+  width: 80%;
+}
+
 #container {
   background: white;
-  height: 440px;
+  height: 300px;
   width: 100%;
   z-index: 1;
-  -webkit-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 3px 15px -1px rgba(0, 0, 0, 0.2);
 }
 #container #left-col {
   width: 40%;
   min-width: 240px;
-  height: 100%;
   float: left;
   background: #34495e;
 }
@@ -301,9 +328,6 @@
   align-items: center;
   flex-direction: column;
 }
-.b {
- 
-}
 .es-visible {
   visibility: visible;
   z-index: 2;
@@ -313,13 +337,23 @@
 }
 .cont {
   background-color: white;
-  
+  margin-top: -15%;
 }
 .pago {
   margin-right: 5px;
 }
+.form-group label{
+  font-weight: bold;
+}
+.c{
+  visibility: visible;
+  height: 235px !important;
+  position: fixed;
+  width: 50%;
+  top: 100px;
 
-/* footer*/
+}
+/* footer
 footer {
   width: 100%;
   padding: 30px;
@@ -370,134 +404,136 @@ footer .divUno {
   background-color: rgba(255, 255, 255, 0.581);
   width: 40%;
 }
-
-@media screen and (max-width: 600px) {
+*/
   /* footer*/
-  #suscripcion {
-    display: block;
-    text-align: center;
-    padding: 10px;
-  }
-  #su {
-    margin-top: 5px;
+  #footer2{
+    background-color: #323232;
+    height:500px;
     width: 100%;
   }
-  footer .divUno {
-    padding: 20px !important;
-  }
-  .divUno {
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-  .br {
-    border-bottom: 1px solid white;
-    padding: 5px;
-  }
-  svg {
-    font-size: small;
-  }
-  .a {
-    font-size: 12px !important;
-  }
-  .contacto {
-    padding-left: 2px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  /* footer*/
-  #suscripcion {
-    display: block;
-    text-align: center;
-    padding: 10px;
-  }
-  #su {
-    margin-top: 5px;
-    width: 100%;
-  }
-  footer .divUno {
-    padding: 20px !important;
-  }
-  .divUno {
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-  .br {
-    padding: 5px;
-  }
-  svg {
-    font-size: small;
-  }
-  .a {
-    font-size: 12px !important;
-  }
-  .contacto {
-    padding-left: 2px;
-  }
-  .contenedor-redes-sociales {
+  .contenedor-footer-logo,.contenedor-footer-nav nav ul,.contenedor-footer-redes nav ul{
     display: flex;
-    justify-content: center;
+    justify-content:center;
+    align-items:center; 
   }
+  .contenedor-footer-nav nav ul li a{
+    text-decoration: none;
+    padding:30px;
+    color:white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .contenedor-footer-redes nav ul li a{
+    text-decoration: none;
+    padding:30px;
+    color:white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .p{
+    font-size:1rem;
+    text-align: center;
+    padding-top:5%;
+  }
+  .contenedor-footer-nav nav ul li{
+    border-right: 1px solid white;
+    list-style: none;
+  }
+  .contenedor-footer-nav nav ul li a:hover{
+  color:green;
+  }
+  .contenedor-footer-nav nav ul li:last-child{
+    border-right: none;
+  }
+  #img-footer{
+    width: auto;
+    height: 60px;
+    margin: 60px;
+  }
+
+  .v {
+    visibility: visible !important;
+    z-index: 2;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+  }
+  .o {
+    visibility: hidden;
+    position: fixed;
+    top: 105px;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    right: 637px;
+  }
+  #botonComprar {
+    margin-top: 20px;
+  }
+  
+@media screen and (max-width: 600px) {
+ /* footer*/
+ #footer2{
+  background-color: #323232;
+  height:100%;
 }
-.v {
-  visibility: visible !important;
-  z-index: 2;
-  background-color: white;
-  width: 100%;
-  height: 100%;
-}
-.o {
-  visibility: hidden;
-  position: fixed;
-  top: 105px;
-  width: 350px;
-  height: 300px;
+.contenedor-footer-logo,.contenedor-footer-nav nav ul,.contenedor-footer-redes nav ul{
   display: flex;
+  justify-content:center;
+  align-items:center; 
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  right: 637px;
 }
-#botonComprar {
-  margin-top: 20px;
+.contenedor-footer-nav nav ul li a{
+  text-decoration: none;
+  padding:30px;
+  color:white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
+.contenedor-footer-redes nav ul li a{
+  text-decoration: none;
+  padding:30px;
+  color:white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.p{
+  font-size:1rem;
+  text-align: center;
+  padding-top:5%;
+}
+.contenedor-footer-nav nav ul li{
+  border:0px;
+  list-style: none;
+}
+.contenedor-footer-redes nav ul li{
+  list-style: none;
+}
+.contenedor-footer-nav nav ul li a:hover{
+color:green;
+}
+.contenedor-footer-nav nav ul li:last-child{
+  border-right: none;
+}
+#img-footer{
+  width: auto;
+  height: 60px;
+  margin: 60px;
+}
+}
 @media screen and (max-width: 768px) {
   .contenedor-carrito {
     padding-top: 30% !important;
-  }
-  /* footer*/
-  #suscripcion {
-    display: block;
-    text-align: center;
-    padding: 10px;
-  }
-  #su {
-    margin-top: 5px;
-    width: 100%;
-  }
-  footer .divUno {
-    padding: 20px !important;
-  }
-  .divUno {
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-  .br {
-    padding: 5px;
-  }
-  svg {
-    font-size: small;
-  }
-  .a {
-    font-size: 12px !important;
-  }
-  .contacto {
-    padding-left: 2px;
-  }
-  .contenedor-redes-sociales {
-    display: flex;
-    justify-content: center;
   }
   #modal {
     background: whitesmoke;
@@ -509,9 +545,7 @@ footer .divUno {
     height: auto;
     position: fixed;
   }
-  .b {
-    width: 78%;
-  }
+
   #container #left-col {
     width: 100%;
     height: auto;
@@ -521,10 +555,9 @@ footer .divUno {
   .cont {
     height: 100px;
     width: 78%;
+    margin-bottom: 40%;
   }
-  .cont button {
-    height: 100px;
-  }
+
   #container #right-col {
     margin-right: 20%;
   }
@@ -555,39 +588,6 @@ footer .divUno {
   }
   .contenedor-carrito {
     padding-top: 50% !important;
-  }
-  /* footer*/
-  #suscripcion {
-    display: block;
-    text-align: center;
-    padding: 10px;
-  }
-  #su {
-    margin-top: 5px;
-    width: 100%;
-  }
-  footer .divUno {
-    padding: 20px !important;
-  }
-  .divUno {
-    margin: 0px !important;
-    padding: 0px !important;
-  }
-  .br {
-    padding: 5px;
-  }
-  svg {
-    font-size: small;
-  }
-  .a {
-    font-size: 12px !important;
-  }
-  .contacto {
-    padding-left: 2px;
-  }
-  .contenedor-redes-sociales {
-    display: flex;
-    justify-content: center;
   }
   #modal {
     background: transparent;

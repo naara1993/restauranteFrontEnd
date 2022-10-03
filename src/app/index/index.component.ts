@@ -20,9 +20,14 @@ export class IndexComponent implements OnInit {
     }
 
     window.addEventListener('scroll', function () {
-      const seccionNosotras = document.getElementById('contenedor-div');
+      const seccionNosotros = document.getElementById('contenedor-div');
+      const wow= document.getElementById('wow');
+      const tarjetas= document.getElementById('tarjetas');
       let scroll = document.documentElement.scrollTop;
-      seccionNosotras.classList.toggle('mostrar-contenedor-div', scroll > 400);
+      wow.classList.toggle('slideInDown',scroll>200);
+      wow.style.visibility="visible";
+      tarjetas.classList.toggle('fadeInPut',scroll>200);
+      seccionNosotros.classList.toggle('mostrar-contenedor-div', scroll > 1200);
     });
   }
 

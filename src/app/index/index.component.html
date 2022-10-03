@@ -7,100 +7,78 @@
   </head>
   <body>
     <app-seccion-nav></app-seccion-nav>
-
-    <!----- main ------>
-    <main
-      style="height: 85vh; background-size: cover"
-      [ngStyle]="{
-        background: 'url(assets/fondo7.jpg) no-repeat'
-      }"
-    >
-      ;
-      <div class="jumbotron jum mt-5">
-        <h1 class="titulo display-4">Restaurante</h1>
-        <p class="titulo parrafo lead">
-          Bienvenidos a nuestra pagina de RestComidas
-        </p>
-
-        <p class="titulo">
-          La sensatez y el estómago vacío no se la llevan bien.
-        </p>
-        <p class="titulo lead">
-          <!-----------------------------
-            <a
-              class="parrafo2 titulo btn btn-primary btn-lg"
-              href="#"
-              role="button"
-              >Learn more</a
-            >              
-              ----------------------------------->
-
-          <button class="btn btn-primary" (click)="abrirModal()">
-            Un nuevo concepto
-          </button>
+    <!----- section ------>
+    <section id="sec">
+      <div id="banner"></div>
+      <div class="jumbotron jum mt-5 text-white" id="jum">
+        <h1 id="titulo" class="titulo pt-3">Bienvenidos</h1>
+        <hr class="s" />
+        <p class="pa pt-3">
+          Nuestro restaurante ofrece comidas de servicio completo con
+          impresionantes vistas vistas desde nuestro patio interior cubierto y
+          nuestra terraza al aire libre.
         </p>
       </div>
-    </main>
-    <!--about-->
-    <div id="contenedor-div" class="text-white container d-flex mt-5">
-      <div class="row">
-        <img
-          id="img-f"
-          class="img-fluid"
-          src="assets/rest.jpg"
-          alt="Card image cap"
-        />
-      </div>
-      <div class="bg-dark body">
-        <h2>About Us</h2>
-        <p>
-          Pesto is a family owned and operated Italian Restaurant offering a
-          combination of fresh ingredients and authentic Italian cooking.
-        </p>
-        <p>
-          We will make sure you are served the most authentic and fresh Italian
-          dishes, while offering the best customer service. Our kitchen is
-          committed to providing our guests with the best Italian Cuisine.
-        </p>
-        <img src="assets/l.png" alt="" width="140" height="70" />
-      </div>
-    </div>
+    </section>
 
-    <!--Nuevas Recetas-->
-    <div class="container text-dark">
-      <div class="jumbotron jum mt-1">
-        <h1 class="text-dark display-3">Featured Offers</h1>
-        <p class="p">
-          We offer a great variety of the best Italian dishes to our visitors
-          and guests. Below are some of our most popular main dishes and
-          desserts.
+    <!--Nuevas Recetas proximas-->
+    <div class="mt-4 pt-4 container text-dark">
+      <div id="wow" class="jumbotron jum mt-1">
+        <h1 class="text-dark titulo2">Visita nuestro menu</h1>
+        <p class="p1">
+          Ofrecemos una gran variedad de los mejores platos italianos a nuestros
+          visitantes y huéspedes. A continuación se presentan algunos de
+          nuestros platos principales.
         </p>
       </div>
       <!--fotos card-->
-      <section class="mt-5 mb-3">
+      <section id="tarjetas" class="mt-5 mb-3">
         <div class="card-group p-1" id="seccion-nuevas-recetas">
           <div class="card">
-            <img src="assets/s.jpg" class="card-img-top" alt="..." />
+            <img src="assets/plato1.jpg" class="card-img-top" alt="..." />
             <div class="card-body text-center">
-              <h5 class="card-title">Proximamente</h5>
-              <p class="card-text">Nuevo plato</p>
-              <p class="card-text"><small class="text-danger">000$</small></p>
+              <h2 class="card-title">Ravioles con salsa roja</h2>
+              <p class="card-text">
+                <a
+                  href=""
+                  class="text-dark bg-danger p-1 mt-3"
+                  routerLink="/menu"
+                  >Ir al menu</a
+                >
+              </p>
+              <p class="card-text"><small class="text-danger"></small></p>
             </div>
           </div>
           <div class="card">
-            <img src="assets/s.jpg" class="card-img-top" alt="..." />
+            <img src="assets/plato2.jpg" class="card-img-top" alt="..." />
             <div class="card-body text-center">
-              <h5 class="card-title">Proximamente</h5>
-              <p class="card-text">Nuevo plato</p>
-              <p class="card-text"><small class="text-danger">000$</small></p>
+              <h2 class="card-title">Paella de marisco</h2>
+              <p class="card-text">
+                <a
+                  href=""
+                  class="text-dark bg-danger p-1 mt-3"
+                  routerLink="/menu"
+                  >Ir al menu</a
+                >
+              </p>
+              <p class="card-text">
+                <small class="text-danger bg-danger"></small>
+              </p>
             </div>
           </div>
           <div class="card">
-            <img src="assets/s.jpg" class="card-img-top" alt="..." />
+            <img src="assets/plato3.jpg" class="card-img-top" alt="..." />
             <div class="card-body text-center">
-              <h5 class="card-title">Proximamente</h5>
-              <p class="card-text">Nuevo plato</p>
-              <p class="card-text"><small class="text-danger">000$</small></p>
+              <h2 class="card-title">Pastel de carne</h2>
+              <p class="card-text">
+                <a
+                  class="text-dark bg-danger p-1 mt-3"
+                  href=""
+                  routerLink="/menu"
+                  >Ir al menu</a
+                >
+              </p>
+              <p class="card-text"><small class="text-danger"></small></p>
             </div>
           </div>
         </div>
@@ -166,6 +144,38 @@
       <!-- Gallery -->
     </section>
 
+    <!--about-->
+    <section id="contenedor-div" class="container mb-5">
+      <div class="row">
+        <div class="col-md-12 col-lg-6 col-sm-12 imc">
+          <img id="img-p" src="assets/home.jpg"     width="483" height="327" alt="">
+          <img
+          id="img-f"
+            class="box-image-static"
+            src="https://livedemo00.template-help.com/wt_53136/images/home-3-2-341x391.png"
+            alt=""
+            width="341"
+            height="391"
+          />
+        </div>
+        <div class="col-md-12 col-lg-6 col-ms-12 col2">
+          <div class="">
+            <h2 class="h2">About Us</h2>
+            <p class="par">
+              Pesto is a family owned and operated Italian Restaurant offering a
+              combination of fresh ingredients and authentic Italian cooking.
+            </p>
+            <p class="par">
+              We will make sure you are served the most authentic and fresh
+              Italian dishes, while offering the best customer service. Our
+              kitchen is committed to providing our guests with the best Italian
+              Cuisine.
+            </p>
+            <img src="assets/firma.png" alt=""  />
+          </div>
+        </div>
+      </div>
+    </section>
     <!--modal-->
     <div class="m">
       <div id="modal1" class="modal1">
@@ -195,13 +205,10 @@
         </div>
       </div>
     </div>
-
-    <!--main-->
-
-    <!----------------- footer  --------------->
+    <!----------------- footer 
 
     <footer class="bg-dark container-fluid">
-      <!--row-->
+      
       <div class="row divUno">
         <div class="col-md-4 col-lg-4 col-sm-12 br">
           <ul class="list-unstyled lista text-white">
@@ -260,13 +267,13 @@
           </ul>
         </div>
 
-        <!--/row-->
+
       </div>
 
       <div class="container-fluid">
-        <!--row-->
+     
         <div class="row contacto-suscripcion mt-3">
-          <!--col-->
+       
           <div class="col-md-5 col-lg-4 col-sm-12">
             <div class="contenedor-redes-sociales d-flex mt-3">
               <h5 class="text-uppercase text-white mb-3">
@@ -291,9 +298,7 @@
               </ul>
             </div>
           </div>
-          <!--/col-->
 
-          <!--col-->
           <div class="col-md-7 col-lg-6 col-sm-12">
             <form novalidate #f="ngForm" action="" id="suscripcion">
               <label for="suscribete" class="text-white pe-1 label-suscribite"
@@ -326,11 +331,72 @@
                 suscribirse
               </button>
             </form>
-            <!--col-->
+        
           </div>
-          <!--/row-->
+     
         </div>
       </div>
+    </footer>
+  -->
+    <!--footer 2 -->
+    <footer id="footer2">
+      <section class="container-fluid">
+        <div class="">
+          <div class="row contenedor-footer-logo">
+            <img id="img-footer" src="assets/l.png" alt="" />
+          </div>
+          <div class="contenedor-footer-nav">
+            <nav class="row">
+              <ul>
+                <li>
+                  <a href="">Home</a>
+                </li>
+                <li>
+                  <a href="">Menu</a>
+                </li>
+                <li>
+                  <a href="">Contacto</a>
+                </li>
+                <li>
+                  <a href="">Local</a>
+                </li>
+                <li>
+                  <a href="">Blog</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="contenedor-footer-redes mt-5">
+            <nav class="row">
+              <ul>
+                <li>
+                  <a href="">
+                    <i class="fa-brands fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="fa-brands fa-youtube"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </section>
+      <p class="p text-muted">
+        © 2022 Rest. All Rights Reserved. Privacy Policy
+      </p>
     </footer>
   </body>
 </html>
