@@ -91,20 +91,28 @@ export class CarritoComponent implements OnInit {
       document.getElementById('direccion')
     );
     if (exampleCheck1.checked) {
-      exampleInputEmail1.disabled = true;
-      exampleInputNumber.disabled = true;
-      this.env = true;
-      this.costEnvio = 0;
-      this.totalF= this.totalF-400;
-      exampleInputNumber.value=null;
-      exampleInputEmail1.value=null;
-    } else {
+        exampleInputEmail1.disabled = true;
+        exampleInputNumber.disabled = true;
+        this.env = true;
+        this.costEnvio = 0;
+        if(this.totalF===0){
+
+        }else{
+          this.totalF= this.totalF-400;
+        }
+        exampleInputNumber.value=null;
+        exampleInputEmail1.value=null;
+      
+      
+   } else {
       exampleInputEmail1.disabled = false;
       exampleInputNumber.disabled = false;
       this.env = false;
       this.costEnvio = 400;
-      this.totalF= this.totalF+this.costEnvio;
+       this.totalF= this.totalF+this.costEnvio;
     }
+
+
   }
   ngOnInit(): void {
     this.roles = this.tokenService.getAuthorities();
@@ -168,6 +176,7 @@ export class CarritoComponent implements OnInit {
 
   listaDetalle() {
     let n = 0;
+    this.totalF=0;
     this.menuServicios.lista().subscribe((lista) => {
       this.menu = lista;
     });
@@ -183,6 +192,7 @@ export class CarritoComponent implements OnInit {
       total = this.orden[i].total;
       this.totalF += total;
     }
+
   }
 actualizar(){
   this.ordenServicio.detalle().subscribe(
@@ -216,7 +226,6 @@ ver(cantidad:number){
     this.carritoServicio.eliminar(id).subscribe(
       (data) => {
         alert('eliminado de la lista');
-        this.totalF=0;
         this.listaDetalle();
         this.envio();
         this.actualizar();

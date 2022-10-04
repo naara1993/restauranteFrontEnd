@@ -119,6 +119,37 @@ getOrden() {
 });
 }
 
+
+// ordn: OrdenDetalle[] = [];
+// show:boolean;
+// actualizar(){
+//   this.carritoServicio.detalle().subscribe(
+//     data => {
+//       this.ordn = data;
+//       this.ver(this.ordn.length);
+//     },
+//     err => {
+//       console.log(err);
+//     }
+//   );
+// }
+// ver(cantidad:number){
+//   let notificacion=document.getElementById('mostrarNotificacion');
+//   notificacion.innerHTML='';
+//   if(cantidad>0){
+//     // notificacion?.classList.add('es-visible');
+//     notificacion.style.visibility="visible";
+//     notificacion!.append(
+//       `${cantidad}`
+//     )
+//   }else{
+//     if(notificacion.matches('.es-visible')){
+//       notificacion.style.visibility="hidden";
+//       // notificacion.classList.remove('es-visible');
+//     }
+//   }
+// }
+
 ord:OrdenDetalle[];
  AgregarAlCarrito(id:number) {
   this.carritoServicio.detalle().subscribe(
@@ -130,6 +161,9 @@ ord:OrdenDetalle[];
       console.log(err);
     }
   );
+
+
+
 
 let ingresado:boolean=false;
  //let p=this.menu.find(x=>x.id==id);
@@ -147,11 +181,11 @@ this.carritoServicio.addCart(id,this.can).subscribe(
    }
    if(!(ingresado)){
     this.orden=data;
-    
     alert("agregado al carrito");
-     this.router.navigate(['/menu']).then(()=>
-     window.location.reload())
-   // this.refresh();
+    // this.actualizar();
+     // this.router.navigate(['/menu']).then(()=>
+      // window.location.reload())
+    this.refresh();
   // window.location.reload();
    }
    if(ingresado){
