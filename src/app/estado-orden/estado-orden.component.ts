@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forEachTrailingCommentRange } from 'typescript';
 import { Orden } from '../carrito/carritoModels/orden';
 import { carritoService } from '../carrito/carritoService/carritoService';
 import { Menu } from '../menu/models/menu';
@@ -20,7 +21,7 @@ export class EstadoOrdenComponent implements OnInit {
     private usuarioServicio: AuthService,
     private tokenService: TokenService,
     private ordenServicio: Carritoservicios,
-    private ordServicio:carritoService
+    private ordServicio: carritoService
   ) {}
   usuario: NuevoUsuario;
   orden: Orden[] = [];
@@ -28,17 +29,17 @@ export class EstadoOrdenComponent implements OnInit {
   ord: Orden[] = [];
   roles: string[];
   isAdmin = false;
-  ter:any;
-  id:any;
+  ter: any;
+  id: any;
 
 
+  ngOnInit(){
 
+let aceptado=document.getElementById('aceptado');
+console.log(aceptado);
 
- 
   
-  ngOnInit(): void {
-
-
+   
     let User = JSON.parse(localStorage.getItem('User')!);
     this.usuarioServicio.detailName(String(User)).subscribe((data) => {
       this.usuario = data;
@@ -61,21 +62,21 @@ export class EstadoOrdenComponent implements OnInit {
       if (rol === 'ROLE_ADMIN') {
         this.isAdmin = true;
       }
-    });   
+    });
   }
-   menu: any[] = [];
-   total: any;
-   mostrar(id: number) {
-  //   let modal = document.getElementById('modal');
-  //   this.ordenServicio.lista().subscribe((data) => {
-  //     for (let i = 0; i < data.length; i++) {
-  //       if (data[i].orden.id == id) {
-  //         this.menu = data.filter((i) => i.orden.id == id);
-  //         this.total = data[i].orden.total;
-  //       }
-  //     }
-  //   });
-  //   modal.classList.add('es-visible');
+  menu: any[] = [];
+  total: any;
+  mostrar(id: number) {
+    //   let modal = document.getElementById('modal');
+    //   this.ordenServicio.lista().subscribe((data) => {
+    //     for (let i = 0; i < data.length; i++) {
+    //       if (data[i].orden.id == id) {
+    //         this.menu = data.filter((i) => i.orden.id == id);
+    //         this.total = data[i].orden.total;
+    //       }
+    //     }
+    //   });
+    //   modal.classList.add('es-visible');
   }
 
   // cerrar() {
@@ -85,28 +86,28 @@ export class EstadoOrdenComponent implements OnInit {
   //   }
   // }
 
-  cancelar(Ordenid:number,UsuarioId:number){
+  cancelar(Ordenid: number, UsuarioId: number) {
     console.log(UsuarioId);
-    this.ordServicio.delete(Ordenid,UsuarioId).subscribe(data =>{
-     alert("orden eliminada");
-     window.location.reload();
+    this.ordServicio.delete(Ordenid, UsuarioId).subscribe((data) => {
+      alert('orden eliminada');
+      window.location.reload();
     });
-}
-or:Orden;
-terminado(idOrden:number){
-  this.listaOrdenesUsuarios.listOrdenes().subscribe((lista) => {
-    this.orden = lista;
-    for(let i = 0; i < lista.length; i++){
-      if(lista[i].id == idOrden){
-        lista[i].estado="Aceptado"
-        console.log(lista);
-        this.or=lista[i];
-          
-      }
-    }
-    this.ordServicio.order(idOrden,this.or).subscribe((orden) =>{
-    })
-  });
+  }
+  or: Orden;
+  terminado(idOrden: number) {
+    this.listaOrdenesUsuarios.listOrdenes().subscribe((lista) => {
+      this.orden = lista;
+      for (let i = 0; i < lista.length; i++) {
+        if (lista[i].id == idOrden) {
+          lista[i].estado = 'aceptado';
+          // this.probarProgres();
 
-}
+          this.or = lista[i];
+        }
+      }
+      this.ordServicio.order(idOrden, this.or).subscribe((orden) => {
+        console.log(orden);
+      });
+    });
+  }
 }

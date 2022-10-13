@@ -16,7 +16,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { NgxStripeModule } from 'ngx-stripe';
 
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 import {  ReactiveFormsModule } from '@angular/forms';
@@ -43,6 +43,7 @@ import { DetalleComponent } from './detalle/detalle.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatProgressBarModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

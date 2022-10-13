@@ -211,7 +211,6 @@ border:0px !important;
   padding:30px;
   color:white;
   font-size: 1rem;
-  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -219,8 +218,7 @@ border:0px !important;
   text-decoration: none;
   padding:30px;
   color:white;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 .p{
@@ -359,7 +357,6 @@ font-size:12px!important;
     padding:30px;
     color:white;
     font-size: 1rem;
-    font-weight: bold;
     text-transform: uppercase;
   }
   
@@ -367,8 +364,7 @@ font-size:12px!important;
     text-decoration: none;
     padding:30px;
     color:white;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1rem;
     text-transform: uppercase;
   }
   .p{

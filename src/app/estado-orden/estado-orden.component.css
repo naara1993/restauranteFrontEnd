@@ -270,7 +270,6 @@ svg text {
   width: 100%;
   object-fit: cover;
 
-  /* Vamos a añadir esto 👇 */
   scroll-snap-align: center;
 }
 
@@ -288,3 +287,4 @@ svg text {
   background-color: #D62929;
   background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)
 }
+

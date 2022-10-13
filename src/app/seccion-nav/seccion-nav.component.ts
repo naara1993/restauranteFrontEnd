@@ -43,7 +43,10 @@ export class SeccionNavComponent implements OnInit {
     this.carritoService.detalle().subscribe(
       data => {
         this.orden = data;
-        this.ver(this.orden.length);
+        console.log(this.orden);
+        console.log(data);
+        
+        this.ver(data.length);
       },
       err => {
         console.log(err);
@@ -68,6 +71,7 @@ export class SeccionNavComponent implements OnInit {
           not.style.visibility="visible";
         }
         else{
+          this.show=false;
           let estado=document.getElementById('estado');
           let not =document.getElementById('not');
           estado.style.visibility="hidden";
